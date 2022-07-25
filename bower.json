@@ -1,0 +1,10 @@
+{
+  "name": "ecommerce",
+  "dependencies": {
+    "foundation-sites": "6.3.1",
+    "motion-ui": "1.2.2",
+    "slick-carousel": "1.6.0",
+    "axios": "0.17.1",
+    "chart.js": "2.7.1"
+  }
+}

@@ -1,0 +1,64 @@
+.dashboard{
+    padding: 2rem 1rem;
+
+    .summary{
+        @include breakpoint(small only){
+            padding-bottom: 1rem;
+        }
+        .card{
+            width: 95%;
+            @include breakpoint(medium only){
+            width: 98%;
+            }
+            margin: 0 auto;
+            .card-section{
+                .fa-solid{
+                    font-size: 2.5rem;
+                    @include breakpoint(medium only){
+                        font-size: 1.3rem;
+                    }
+                    &.fa-cart-shopping{
+                        color: #ff4500;
+                    }
+                    &.fa-temperature-empty{
+                        color: #da8301;
+                    }
+                    &.fa-money-bill{
+                        color: #00aa00;
+                    }
+                    &.fa-users{
+                        color: #00bfff;
+                    }
+                }
+                p,h4{
+                    margin: 0;
+                    padding: 0;
+                    text-align: right;
+                }
+            }
+            .card-divider{
+                margin-top: 5rem;
+                border-top: 1px solid  #6c9a9d;
+                background-color: #fff;
+                a{
+                    color: #337ab7;
+                }
+            }
+        }
+    }
+    .graph{
+        margin: 2rem 0.5rem;
+        @include breakpoint(small only){
+            margin-top: 1rem;
+        }
+        .card{
+            width: 98%;
+        }
+        canvas{
+            height: 300px !important;
+            @include breakpoint(small only){
+                height: auto;
+            }
+        }
+    }
+}
