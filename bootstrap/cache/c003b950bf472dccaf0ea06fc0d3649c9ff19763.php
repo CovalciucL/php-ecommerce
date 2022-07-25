@@ -12,7 +12,7 @@
 </head>
 <body data-page-id="<?php echo $__env->yieldContent('data-page-id'); ?>">
     <?php echo $__env->yieldContent('body'); ?>
-    <script src="/public/js/app.js"></script>
+    <script src="/public/js/all.js"></script>
     <?php echo $__env->yieldContent('stripe-checkout'); ?>
     <?php echo $__env->yieldContent('paypal-checkout'); ?>
 </body>

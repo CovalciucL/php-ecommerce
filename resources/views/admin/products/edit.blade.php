@@ -4,8 +4,8 @@
     
 @section('content')
     <div class="add-product">
-        <div class="row expanded">
-            <div class="column medium-11">
+        <div class="grid-x">
+            <div class="cell medium-11">
                 <h2>Edit {{$product->name}}</h2>
                 <hr>
             </div>
@@ -13,18 +13,18 @@
         @include('includes.message')
         <form action="/public/admin/product/edit" method="POST" enctype="multipart/form-data">
             <div class="small-12 medium-11">
-                <div class="row expanded">
-                    <div class="small-12 medium-6 column">
+                <div class="grid-x grid-padding-x">
+                    <div class="small-12 medium-6 cell">
                         <label>Product name:
                             <input type="text" name="name" value="{{$product->name}}">
                         </label>
                     </div>
-                    <div class="small-12 medium-6 column">
+                    <div class="small-12 medium-6 cell">
                         <label>Product price:
                             <input type="text" name="price" value="{{$product->price}}">
                         </label>
                     </div>
-                    <div class="small-12 medium-6 column">
+                    <div class="small-12 medium-6 cell">
                         <label>Product Category:
                             <select name="category" id="product-category">
                                 <option value="{{$product->category->id}}">
@@ -36,7 +36,7 @@
                             </select>
                         </label>
                     </div>
-                    <div class="small-12 medium-6 column">
+                    <div class="small-12 medium-6 cell">
                         <label>Product Subcategory:
                             <select name="subcategory" id="product-subcategory">
                                 <option value="{{$product->subCategory->id}}">
@@ -45,7 +45,7 @@
                             </select>
                         </label>
                     </div>
-                    <div class="small-12 medium-6 column">
+                    <div class="small-12 medium-6 cell">
                         <label>Product Quantity:
                             <select name="quantity">
                                 <option value="{{$product->quantity}}">
@@ -59,7 +59,7 @@
                             </select>
                         </label>
                     </div>
-                    <div class="small-12 medium-6 column">
+                    <div class="small-12 medium-6 cell">
                         <br>
                         <div class="input-group">
                             <span class="input-group-label">
@@ -68,7 +68,7 @@
                             <input type="file" name="productImage" class="input-group-field">
                         </div>
                     </div>
-                    <div class="small-12 column">
+                    <div class="small-12 cell">
                         <label for="descriptyion">Description:
                             <textarea name="description" placeholder="Description">{{$product->description}}</textarea>
                         </label>
@@ -79,7 +79,7 @@
                 </div>
             </div>
         </form>
-        <div class="row expanded">
+        <div class="grid-x grid-padding-x">
             <div class="small-12 medium-11">
                 <table data-form="deleteForm">
                     <tr >

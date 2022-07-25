@@ -1,11 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import "~foundation-sites/assets/foundation";
 
-@import "../bower/vendor/foundation-sites/assets/foundation.scss";
-
-
-@import "../bower/vendor/motion-ui/src/motion-ui.scss";
-@include motion-ui-transitions;
-@include motion-ui-animations;
 @import "../sass/admin/nav.scss";
 @import '../sass/global.scss';
 @import "../sass/pages/nav.scss";
@@ -15,3 +10,6 @@
 @import "../sass/pages/cart.scss";
 @import "../sass/admin/dashboard.scss";
 
+@import "~motion-ui/src/motion-ui";
+
+@import "~slick-carousel/slick/slick.css"

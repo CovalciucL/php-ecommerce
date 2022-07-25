@@ -3,15 +3,15 @@
     
 <?php $__env->startSection('content'); ?>
     <div class="category">
-        <div class="row expanded">
-            <div class="column medium-11">
+        <div class="grid-x">
+            <div class="cell medium-11">
                 <h2>Product Categories</h2>
                 <hr>
             </div>
         </div>
         <?php echo $__env->make('includes.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-        <div class="row expanded">
-            <div class="small-12 medium-6 column">
+        <div class="grid-x">
+            <div class="small-12 medium-6 cell">
                 <form action="/public/admin/product/categories" method="POST">
                     <div class="input-group">
                         <input type="text" class="input-group-field" placeholder="Search by name">
@@ -21,7 +21,7 @@
                     </div>
                 </form>
             </div>
-            <div class="small-12 medium-5 end column">
+            <div class="small-12 medium-5 end cell">
                 <form action="/public/admin/product/categories" method="POST">
                     <div class="input-group">
                         <input type="text" class="input-group-field" name="name" placeholder="Category Name">
@@ -33,8 +33,8 @@
                 </form>
             </div>
         </div>
-        <div class="row expanded">
-            <div class="small-12 medium-11 column">
+        <div class="grid-x grid-padding-x">
+            <div class="small-12 medium-11 cell">
                 <?php if(count($categories)): ?>
                     <table class="hover unstriped" data-form="deleteForm">
                         <thead>
@@ -123,14 +123,14 @@
         </div>
     </div>
     <div class="subcategory">
-        <div class="row expanded">
-           <div class="column medium-11">
+        <div class="grid-x grid-padding-x">
+           <div class="cell medium-11">
                 <h2>Subcategories</h2>
                 <hr>
            </div>
         </div>
-        <div class="row expanded">
-            <div class="small11-12 medium-11 column">
+        <div class="grid-x">
+            <div class="small11-12 medium-11 cell">
                 <?php if(count(\App\Models\SubCategory::all())): ?>
                     <table class="hover unstriped" data-form="deleteForm">
                         <thead>

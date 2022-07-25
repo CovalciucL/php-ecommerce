@@ -3,22 +3,22 @@
     
 <?php $__env->startSection('content'); ?>
     <div class="products">
-        <div class="row expanded">
-            <div class="column medium-11">
+        <div class="grid-x grid">
+            <div class="cell medium-11">
                 <h2>Manage Inventory Items</h2>
                 <hr>
             </div>
         </div>
         <?php echo $__env->make('includes.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-       <div class="row expanded">
-            <div class="small-12 medium-11 column">
+       <div class="grid-x grid-padding-x">
+            <div class="small-12 medium-11 cell">
                 <a href="/public/admin/product/create" class="button float-right">
                 <i class="fa-solid fa-plus"></i>   
             </a>
             </div>
        </div>
-        <div class="row expanded">
-            <div class="small-12 medium-11 column">
+        <div class="grid-x grid-padding-x">
+            <div class="small-12 medium-11 cell">
                 <?php if(count($products)): ?>
                     <table class="hover unstriped" data-form="deleteForm">
                         <thead>
