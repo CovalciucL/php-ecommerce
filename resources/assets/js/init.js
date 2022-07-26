@@ -26,6 +26,10 @@
                 break;
             case 'adminDashboard':
                 ACMESTORE.admin.dashboard();
+                break;
+            case 'products':
+            case 'categories':
+                ACMESTORE.products.display();
                 break;    
             default:  
         }

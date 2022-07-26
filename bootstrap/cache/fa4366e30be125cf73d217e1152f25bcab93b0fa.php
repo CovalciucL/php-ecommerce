@@ -11,8 +11,8 @@
       <li><a href="/public/admin/product/create"><i class="fa-solid fa-plus"></i>Add Product</a></li>
       <li><a href="/public/admin/products"><i class="fa-solid fa-pen-to-square"></i>Manage Products</a></li>
       <li><a href="/public/admin/product/categories"><i class="fa-solid fa-down-left-and-up-right-to-center"></i>Categories</a></li>
-      <li><a href="/public/admin/users/orders"><i class="fa-solid fa-cart-shopping"></i>View Orders</a></li>
-      <li><a href="/public/admin/users/payments"><i class="fa-solid fa-money-bill-1"></i>Payments</a></li>
+      <li><a href="/public/admin/orders"><i class="fa-solid fa-cart-shopping"></i>Orders</a></li>
+      <li><a href="/public/admin/payments"><i class="fa-solid fa-money-bill-1"></i>Payments</a></li>
       <li><a href="/public/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
     </ul>
 </div><?php /**PATH /var/www/html/resources/views/includes/admin-sidebar.blade.php ENDPATH**/ ?>

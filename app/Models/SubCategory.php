@@ -11,6 +11,7 @@ class SubCategory extends Model
     use SoftDeletes;
 
     public $timestamps = true;
+    public $table = 'sub_categories';
     protected $fillable = ['name','slug','category_id'];
     protected $dates = ['deleted_at'];
 
@@ -38,5 +39,9 @@ class SubCategory extends Model
             ]);
         }
         return $subcategories;
+    }
+    public function scopeFindBySlug($queryBuilder, $slug)
+    {   
+        return $queryBuilder->where('slug', $slug)->first();
     }
 }

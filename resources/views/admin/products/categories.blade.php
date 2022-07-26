@@ -4,14 +4,14 @@
     
 @section('content')
     <div class="category">
-        <div class="grid-x">
+        <div class="grid-x grid-padding-x">
             <div class="cell medium-11">
                 <h2>Product Categories</h2>
                 <hr>
             </div>
         </div>
         @include('includes.message')
-        <div class="grid-x">
+        <div class="grid-x grid-padding-x">
             <div class="small-12 medium-6 cell">
                 <form action="/public/admin/product/categories" method="POST">
                     <div class="input-group">
@@ -129,7 +129,7 @@
                 <hr>
            </div>
         </div>
-        <div class="grid-x">
+        <div class="grid-x grid-padding-x">
             <div class="small11-12 medium-11 cell">
                 @if(count(\App\Models\SubCategory::all()))
                     <table class="hover unstriped" data-form="deleteForm">
@@ -166,7 +166,6 @@
                                                 <div class="input-group">
                                                     <input id="item-subcategory-name-{{$subcategory['id']}}" type="text" value="{{$subcategory['name']}}">
                                                     <label> 
-                                                        Change Category
                                                         <select id="item-category-{{$subcategory['category_id']}}">
                                                             @foreach(\App\Models\Category::all() as $category)
                                                                 @if($category->id == $subcategory['category_id'])

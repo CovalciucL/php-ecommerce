@@ -5,12 +5,16 @@
         <div class="text-center">
             <i v-show="loading" class="fa-solid fa-spinner fa-spin" style="font-size:3rem; padding-bottom:3rem;color: #0a0a0a;"></i>
         </div>
-        <section class="item-container" v-if="loading == false">
+        <section class="item-container" v-cloak v-if="loading == false">
             <div class="grid-x cell">
                 <nav aria-label="You are here:" role="navigation">
                     <ul class="breadcrumbs">
-                      <li><a href="'/public/product/category/' + category.slug">{{category.name}}</a></li>
-                      <li><a href="'/public/product/subcategory/' + subCategory.slug">{{subCategory.name}}</a></li>
+                        <li>
+                            <a :href="'/public/products/category/' + category.slug">{{ category.name }}</a>
+                        </li>
+                    <li>
+                        <a :href="'/public/products/category/' + category.slug + '/' + subCategory.slug">{{ subCategory.name }}</a>
+                    </li>
                       <li>{{product.name}}</li>
                     </ul>
                   </nav>

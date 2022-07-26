@@ -11,6 +11,10 @@ $router->map('POST','/public/load-more','App\Controllers\IndexController@loadMor
 $router->map('GET','/public/product/[i:id]','App\Controllers\ProductController@show','product');
 $router->map('GET','/public/product-details/[i:id]','App\Controllers\ProductController@get','product_details');
 
+$router->map('GET', '/public/products', 'App\Controllers\ProductController@showAll', 'products');
+$router->map('GET', '/public/products/category/[*:slug]?/[*:subcategory]?','App\Controllers\CategoryController@show', 'products_category');
+$router->map('POST', '/public/products/category/load-more','App\Controllers\CategoryController@loadMoreProducts', 'load_more_products_cat'
+);
 
 
 

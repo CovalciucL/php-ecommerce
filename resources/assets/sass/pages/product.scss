@@ -3,7 +3,8 @@
 
     @include breakpoint(small only){
         text-align: center;
-        padding: 0.7rem;
+        padding: 1rem;
+        padding-top: 5rem;
     }
     p{
         padding: 1rem;

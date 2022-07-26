@@ -107,7 +107,7 @@ class ProductCategoryController extends BaseController
                     exit;
                 }
 
-                Category::where('id',$id)->update(['name' => $request->name]);
+                Category::where('id',$id)->update(['name' => $request->name,'slug' => slug($request->name)]);
 
                 echo json_encode(['success' => 'Record Updated Successfully']);
 

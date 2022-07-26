@@ -7,7 +7,6 @@
     <title>Store - <?php echo $__env->yieldContent('title'); ?></title>
 
     <link rel="stylesheet" href="/public/css/all.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="https://kit.fontawesome.com/a7178e0ca6.js" crossorigin="anonymous"></script>
 </head>
 <body data-page-id="<?php echo $__env->yieldContent('data-page-id'); ?>">

@@ -11981,7 +11981,7 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(17);
-module.exports = __webpack_require__(59);
+module.exports = __webpack_require__(60);
 
 
 /***/ }),
@@ -12009,6 +12009,7 @@ __webpack_require__(55);
 __webpack_require__(56);
 __webpack_require__(57);
 __webpack_require__(58);
+__webpack_require__(59);
 
 /***/ }),
 /* 18 */
@@ -44963,7 +44964,8 @@ module.exports = function(Chart) {
         global: {},
         admin: {},
         homeslider: {},
-        product: {}
+        product: {},
+        products: {}
     };
 })();
 
@@ -44987,11 +44989,11 @@ module.exports = function(Chart) {
                     token: token, name: name, category_id: category_id
                 },
                 success: function success(data) {
-                    var response = jQuery.parseJSON(data);
+                    var response = JSON.parse(data);
                     $(".notification").css("display", "block").removeClass('alert').addClass('primary').delay(4000).slideUp(300).html(response.success);
                 },
                 error: function error(request, _error) {
-                    var errors = jQuery.parseJSON(request.responseText);
+                    var errors = JSON.parse(request.responseText);
                     var ul = document.createElement('ul');
 
                     $.each(errors, function (key, value) {
@@ -45099,7 +45101,7 @@ module.exports = function(Chart) {
                 url: '/public/admin/category/' + category_id + '/selected',
                 data: { category_id: category_id },
                 success: function success(response) {
-                    var subcategories = jQuery.parseJSON(response);
+                    var subcategories = JSON.parse(response);
                     if (subcategories.length) {
                         $.each(subcategories, function (key, value) {
                             $('#product-subcategory').append('<option value="' + value.id + '">' + value.name + '</option>');
@@ -45132,11 +45134,11 @@ module.exports = function(Chart) {
                     token: token, name: name
                 },
                 success: function success(data) {
-                    var response = jQuery.parseJSON(data);
+                    var response = JSON.parse(data);
                     $(".notification").css("display", "block").removeClass('alert').addClass('primary').delay(4000).slideUp(300).html(response.success);
                 },
                 error: function error(request, _error) {
-                    var errors = jQuery.parseJSON(request.responseText);
+                    var errors = JSON.parse(request.responseText);
                     var ul = document.createElement('ul');
 
                     $.each(errors, function (key, value) {
@@ -45168,11 +45170,11 @@ module.exports = function(Chart) {
                     token: token, name: name, category_id: category_id
                 },
                 success: function success(data) {
-                    var response = jQuery.parseJSON(data);
+                    var response = JSON.parse(data);
                     $(".notification").css("display", "block").removeClass('alert').addClass('primary').delay(4000).slideUp(300).html(response.success);
                 },
                 error: function error(request, _error2) {
-                    var errors = jQuery.parseJSON(request.responseText);
+                    var errors = JSON.parse(request.responseText);
                     var ul = document.createElement('ul');
 
                     $.each(errors, function (key, value) {
@@ -45413,6 +45415,12 @@ module.exports = function(Chart) {
             axios.post('/public/cart', postData).then(function (response) {
                 callback(response.data.success);
             });
+        },
+        loadMore: function loadMore(endpoint, $postData, callback) {
+            var postdata = $.param($postData);
+            axios.post(endpoint, postdata).then(function (response) {
+                callback(response.data);
+            });
         }
     };
 })();
@@ -45515,6 +45523,10 @@ module.exports = function(Chart) {
             case 'adminDashboard':
                 ACMESTORE.admin.dashboard();
                 break;
+            case 'products':
+            case 'categories':
+                ACMESTORE.products.display();
+                break;
             default:
         }
     });
@@ -45522,6 +45534,67 @@ module.exports = function(Chart) {
 
 /***/ }),
 /* 59 */
+/***/ (function(module, exports) {
+
+(function () {
+    'use strict';
+
+    ACMESTORE.products.display = function () {
+        var app = new Vue({
+            el: '#root',
+            data: {
+                products: [],
+                count: 0,
+                loading: false,
+                next: 8,
+                targetElement: $('.display-products'),
+                loadMoreEndpoint: '/public/products/category/load-more'
+            },
+            methods: {
+                stringLimit: function stringLimit(string, value) {
+                    return ACMESTORE.module.truncateString(string, value);
+                },
+                addToCart: function addToCart(id) {
+                    ACMESTORE.module.addItemToCart(id, function (message) {
+                        $(".notify").css("display", 'block').delay(4000).slideUp(300).html(message);
+                    });
+                },
+                loadMoreProducts: function loadMoreProducts() {
+                    var token = this.targetElement.data('token');
+                    var urlParams = this.targetElement.data('urlparams');
+                    this.loading = true;
+                    var postData = { next: this.next, token: token, count: this.count };
+
+                    if (typeof urlParams !== 'undefined' && urlParams) {
+                        postData.slug = urlParams.slug;
+                        if (typeof urlParams.subcategory !== 'undefined') {
+                            postData.subcategory = urlParams.subcategory;
+                        }
+                    }
+                    ACMESTORE.module.loadMore(this.loadMoreEndpoint, postData, function (response) {
+                        app.products = response.products;
+                        app.count = response.count;
+                        app.loading = false;
+                        app.next += 2;
+                    });
+                }
+            },
+            created: function created() {
+                this.loadMoreProducts();
+            },
+            mounted: function mounted() {
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+                        app.loadMoreProducts();
+                    }
+                });
+            }
+        });
+    };
+})();
+
+/***/ }),
+/* 60 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

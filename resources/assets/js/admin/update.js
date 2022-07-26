@@ -13,11 +13,11 @@
                     token:token, name: name
                 },
                 success: function(data){
-                    var response = jQuery.parseJSON(data);
+                    var response = JSON.parse(data);
                     $(".notification").css("display", "block").removeClass('alert').addClass('primary').delay(4000).slideUp(300).html(response.success)
                 },
                 error: function(request,error){
-                    var errors = jQuery.parseJSON(request.responseText);
+                    var errors = JSON.parse(request.responseText);
                     var ul = document.createElement('ul');
 
                     $.each(errors, function(key, value){
@@ -49,11 +49,11 @@
                     token:token, name: name, category_id:category_id
                 },
                 success: function(data){
-                    var response = jQuery.parseJSON(data);
+                    var response = JSON.parse(data);
                     $(".notification").css("display", "block").removeClass('alert').addClass('primary').delay(4000).slideUp(300).html(response.success)
                 },
                 error: function(request,error){
-                    var errors = jQuery.parseJSON(request.responseText);
+                    var errors = JSON.parse(request.responseText);
                     var ul = document.createElement('ul');
 
                     $.each(errors, function(key, value){

@@ -10,7 +10,7 @@
                 url: '/public/admin/category/' + category_id + '/selected',
                 data: {category_id:category_id},
                 success: function (response){
-                    var subcategories = jQuery.parseJSON(response);
+                    var subcategories = JSON.parse(response);
                     if(subcategories.length){
                         $.each(subcategories, function(key, value){
                             $('#product-subcategory').append('<option value="' + value.id + '">' + value.name + '</option>');

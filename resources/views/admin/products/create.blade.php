@@ -4,7 +4,7 @@
     
 @section('content')
     <div class="add-product">
-        <div class="grid-x">
+        <div class="grid-x grid-padding-x">
             <div class="cell medium-11">
                 <h2>Add Inventory Item</h2>
                 <hr>

@@ -11,7 +11,7 @@
         <div class="text-center">
             <i v-show="loading" class="fa-solid fa-spinner fa-spin" style="font-size:3rem; padding-bottom:3rem;color: #0a0a0a;"></i>
         </div>
-        <section class="items" v-if="loading == false">
+        <section class="items" v-cloak v-if="loading == false">
             <div class="grid-x grid-padding-x">
                 <div class="small-12">
                     <h2 v-if="fail" v-text="message"></h2>

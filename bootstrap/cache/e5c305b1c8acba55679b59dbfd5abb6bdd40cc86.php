@@ -3,14 +3,14 @@
     
 <?php $__env->startSection('content'); ?>
     <div class="category">
-        <div class="grid-x">
+        <div class="grid-x grid-padding-x">
             <div class="cell medium-11">
                 <h2>Product Categories</h2>
                 <hr>
             </div>
         </div>
         <?php echo $__env->make('includes.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-        <div class="grid-x">
+        <div class="grid-x grid-padding-x">
             <div class="small-12 medium-6 cell">
                 <form action="/public/admin/product/categories" method="POST">
                     <div class="input-group">
@@ -129,7 +129,7 @@
                 <hr>
            </div>
         </div>
-        <div class="grid-x">
+        <div class="grid-x grid-padding-x">
             <div class="small11-12 medium-11 cell">
                 <?php if(count(\App\Models\SubCategory::all())): ?>
                     <table class="hover unstriped" data-form="deleteForm">
@@ -166,7 +166,6 @@
                                                 <div class="input-group">
                                                     <input id="item-subcategory-name-<?php echo e($subcategory['id']); ?>" type="text" value="<?php echo e($subcategory['name']); ?>">
                                                     <label> 
-                                                        Change Category
                                                         <select id="item-category-<?php echo e($subcategory['category_id']); ?>">
                                                             <?php $__currentLoopData = \App\Models\Category::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                 <?php if($category->id == $subcategory['category_id']): ?>

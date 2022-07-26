@@ -3,7 +3,7 @@
     
 <?php $__env->startSection('content'); ?>
     <div class="products">
-        <div class="grid-x grid">
+        <div class="grid-x grid-padding-x">
             <div class="cell medium-11">
                 <h2>Manage Inventory Items</h2>
                 <hr>
@@ -45,7 +45,7 @@
                                     <td><?php echo e($product['added']); ?></td>
                                     <td width="50" class="text-right">
                                         <span data-tooltip aria-haspopup="true" class="has-tip top" data-disable-hover="false" tabindex="1" title="Edit Product">
-                                            <a href="/public/admin/product/<?php echo e($product['id']); ?>/edit">Edit <i class="fa-solid fa-pencil"></i></a>
+                                            <a href="/public/admin/product/<?php echo e($product['id']); ?>/edit"> <i class="fa-solid fa-pencil"></i></a>
                                         </span>
                                     </td>
                                 </tr>

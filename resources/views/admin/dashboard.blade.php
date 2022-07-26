@@ -3,7 +3,7 @@
 @section('data-page-id', 'adminDashboard')
     
 @section('content')
-{{-- TO DO Products Page, Categories Page, Dashboard Pages, Breadcrumbs  --}}
+{{-- TO DO Products Page, Categories Page, Dashboard Pages, Breadcrumbs, Users  --}}
     <div class="dashboard">
         <div class="grid-x" data-equilizer data-equilizer-on="medium">
             {{-- Order --}}
@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-divider">
                         <div class="grid-x cell">
-                            <a href="#">Order Details</a>
+                            <a href="/public/admin/orders">Order Details</a>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="card-divider">
                         <div class="grid-x cell">
-                            <a href="#">Payment Details</a>
+                            <a href="/public/admin/payments">Payment Details</a>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="card-divider">
                         <div class="grid-x cell">
-                            <a href="#">Registred Users</a>
+                            <a href="/public/admin/users">Registred Users</a>
                         </div>
                     </div>
                 </div>

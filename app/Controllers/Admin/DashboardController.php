@@ -20,8 +20,7 @@ class DashboardController extends BaseController
     }
     public function show()
     {   
-        $orders = Capsule::table('orders')->count(Capsule::raw('Distinct order_no'));
-        // $orders = Order::all()->count();
+        $orders = Order::all()->count();
         $products = Product::all()->count();
         $users = User::all()->count();
         $payments = Payment::all()->sum('amount');

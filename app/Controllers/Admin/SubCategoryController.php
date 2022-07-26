@@ -99,7 +99,7 @@ class SubCategoryController extends BaseController
                     echo json_encode($response);
                     exit;
                 }
-                SubCategory::where('id',$id)->update(['name' => $request->name, 'category_id' => $request->category_id]);
+                SubCategory::where('id',$id)->update(['name' => $request->name, 'slug' => slug($request->name),'category_id' => $request->category_id]);
                 echo json_encode(['success' => 'Subcategory Updated Successfully']);
                 exit;
             } else {

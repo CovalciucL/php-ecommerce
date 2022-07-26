@@ -5,7 +5,7 @@
 @section('content')
     <div class="auth" id="auth">
         <section class="register_form">
-            <div class="grid-x grid-padding-x">
+            <div class="grid-x align-center grid-padding-x">
                 <div class="small-12 medium-7 medium-centered">
                     <h2 class="text-center">
                         Create Account
