@@ -2,6 +2,6 @@ node_modules
 vendor
 .env
 # .bowerrc
-composer.lock
+# composer.lock
 package-lock.json
 npm-debug.log
