@@ -1,6 +1,6 @@
 node_modules
 vendor
-.env
+#.env
 # .bowerrc
 # composer.lock
 package-lock.json
