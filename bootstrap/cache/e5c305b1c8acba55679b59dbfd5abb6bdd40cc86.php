@@ -10,18 +10,8 @@
             </div>
         </div>
         <?php echo $__env->make('includes.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-        <div class="grid-x grid-padding-x">
-            <div class="small-12 medium-6 cell">
-                <form action="/public/admin/product/categories" method="POST">
-                    <div class="input-group">
-                        <input type="text" class="input-group-field" placeholder="Search by name">
-                        <div class="input-group-button">
-                            <input type="submit" class="button" value="Search">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="small-12 medium-5 end cell">
+        <div class="grid-x grid-padding-x align-center">
+            <div class="small-12 medium-5 cell ">
                 <form action="/public/admin/product/categories" method="POST">
                     <div class="input-group">
                         <input type="text" class="input-group-field" name="name" placeholder="Category Name">
