@@ -1,7 +1,7 @@
 @if(isset($detail['product']))
     <tr>
         <td>
-            <img src="/public/{{ $detail['product']['image_path'] }}"
+            <img src="/{{ $detail['product']['image_path'] }}"
                  alt="{{ $detail['product']['name'] }}" height="40" width="40" >
         </td>
         <td>{{ $detail['product']['name'] }}</td>

@@ -11,7 +11,7 @@
             </div>
         </div>
         @include('includes.message')
-        <form action="/public/admin/product/edit" method="POST" enctype="multipart/form-data">
+        <form action="/admin/product/edit" method="POST" enctype="multipart/form-data">
             <div class="small-12 medium-11">
                 <div class="grid-x grid-padding-x">
                     <div class="small-12 medium-6 cell">
@@ -84,7 +84,7 @@
                 <table data-form="deleteForm">
                     <tr >
                         <td style="border:1px solid white;">
-                            <form action="/public/admin/product/{{$product->id}}/delete" method="POST" class="delete-item">
+                            <form action="/admin/product/{{$product->id}}/delete" method="POST" class="delete-item">
                                 <input type="hidden" name="token" value="{{\App\Classes\CSRFToken::token()}}"/>
                                 <button type="submit" class="button alert">Delete Product</button>
                              </form>

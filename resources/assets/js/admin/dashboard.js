@@ -14,7 +14,7 @@
         var orderData = [];
         var revenueData = [];
 
-        axios.get('/public/admin/charts').then(function(response){
+        axios.get('/admin/charts').then(function(response){
             response.data.orders.forEach(function(monthly){
                 orderData.push(monthly.count);
                 orderLabels.push(monthly.new_date);

@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-divider">
                         <div class="grid-x cell">
-                            <a href="/public/admin/orders">Order Details</a>
+                            <a href="/admin/orders">Order Details</a>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="card-divider">
                         <div class="grid-x cell">
-                            <a href="/public/admin/products">View Products</a>
+                            <a href="/admin/products">View Products</a>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="card-divider">
                         <div class="grid-x cell">
-                            <a href="/public/admin/payments">Payment Details</a>
+                            <a href="/admin/payments">Payment Details</a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="card-divider">
                         <div class="grid-x cell">
-                            <a href="/public/admin/users">Registred Users</a>
+                            <a href="/admin/users">Registred Users</a>
                         </div>
                     </div>
                 </div>

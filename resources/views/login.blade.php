@@ -11,13 +11,13 @@
                         Login
                     </h2>
                     @include('includes.message')
-                    <form action="/public/login" method="POST">
+                    <form action="/login" method="POST">
                     <input type="text" name="username" placeholder="Your Username or Email" value="{{\App\Classes\Request::old('post','username')}}">
                     <input type="password" name="password" placeholder="Your Password">
                     <input type="hidden" name="token" value="{{\App\Classes\CSRFToken::token()}}">
                     <button class="button float-right">Login</button>
                 </form>
-                <p>Don't have an account? <a href="/public/register">Register Here</a></p>
+                <p>Don't have an account? <a href="/register">Register Here</a></p>
                 </div>
             </div>
         </section>

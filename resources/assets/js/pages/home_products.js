@@ -14,8 +14,8 @@
                 getFeaturedProducts: function(){
                     this.loading = true;
                     axios.all([
-                        axios.get('/public/featured'),
-                        axios.get('/public/get-products')
+                        axios.get('/featured'),
+                        axios.get('/get-products')
                     ]).then(axios.spread(function(featuredResponse, productsResponse){
                         app.featured = featuredResponse.data.featured;
                         app.products = productsResponse.data.products;
@@ -35,7 +35,7 @@
                     this.loading = true;
                     var token = $('.display-products').data('token');
                     var data = $.param({next: 2, token: token, count: this.count});
-                    axios.post('/public/load-more',data)
+                    axios.post('/load-more',data)
                         .then(function(response){
                             app.products = response.data.products;
                             app.count = response.data.count;

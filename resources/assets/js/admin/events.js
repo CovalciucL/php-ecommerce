@@ -7,7 +7,7 @@
             $('#product-subcategory').html('Select subcategory')
             $.ajax({
                 type:'GET',
-                url: '/public/admin/category/' + category_id + '/selected',
+                url: '/admin/category/' + category_id + '/selected',
                 data: {category_id:category_id},
                 success: function (response){
                     var subcategories = JSON.parse(response);

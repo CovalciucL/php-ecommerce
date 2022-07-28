@@ -44984,7 +44984,7 @@ module.exports = function(Chart) {
 
             $.ajax({
                 type: 'POST',
-                url: '/public/admin/product/subcategory/create',
+                url: '/admin/product/subcategory/create',
                 data: {
                     token: token, name: name, category_id: category_id
                 },
@@ -45029,7 +45029,7 @@ module.exports = function(Chart) {
         var orderData = [];
         var revenueData = [];
 
-        axios.get('/public/admin/charts').then(function (response) {
+        axios.get('/admin/charts').then(function (response) {
             response.data.orders.forEach(function (monthly) {
                 orderData.push(monthly.count);
                 orderLabels.push(monthly.new_date);
@@ -45098,7 +45098,7 @@ module.exports = function(Chart) {
             $('#product-subcategory').html('Select subcategory');
             $.ajax({
                 type: 'GET',
-                url: '/public/admin/category/' + category_id + '/selected',
+                url: '/admin/category/' + category_id + '/selected',
                 data: { category_id: category_id },
                 success: function success(response) {
                     var subcategories = JSON.parse(response);
@@ -45129,7 +45129,7 @@ module.exports = function(Chart) {
             var name = $("#item-name-" + id).val();
             $.ajax({
                 type: 'POST',
-                url: '/public/admin/product/categories/' + id + '/edit',
+                url: '/admin/product/categories/' + id + '/edit',
                 data: {
                     token: token, name: name
                 },
@@ -45165,7 +45165,7 @@ module.exports = function(Chart) {
 
             $.ajax({
                 type: 'POST',
-                url: '/public/admin/product/subcategory/' + id + '/edit',
+                url: '/admin/product/subcategory/' + id + '/edit',
                 data: {
                     token: token, name: name, category_id: category_id
                 },
@@ -45206,7 +45206,7 @@ module.exports = function(Chart) {
                     stripeToken: _token.id,
                     stripeEmail: _token.email
                 });
-                axios.post('/public/cart/payment', data).then(function (response) {
+                axios.post('/cart/payment', data).then(function (response) {
                     $(".notify").css("display", 'block').delay(4000).slideUp(300).html(response.data.success);
                     app.displayItems();
                 }).catch(function (error) {
@@ -45227,7 +45227,7 @@ module.exports = function(Chart) {
             methods: {
                 displayItems: function displayItems() {
                     this.loading = true;
-                    axios.get('/public/cart/items').then(function (response) {
+                    axios.get('/cart/items').then(function (response) {
                         if (response.data.fail) {
                             app.fail = true;
                             app.message = response.data.fail;
@@ -45242,21 +45242,21 @@ module.exports = function(Chart) {
                 },
                 updateQuantity: function updateQuantity(product_id, operator) {
                     var postData = $.param({ product_id: product_id, operator: operator });
-                    axios.post('/public/cart/update-qty', postData).then(function () {
+                    axios.post('/cart/update-qty', postData).then(function () {
                         app.displayItems();
                         app.paypalCheckout();
                     });
                 },
                 removeItem: function removeItem(index) {
                     var postData = $.param({ item_index: index });
-                    axios.post('/public/cart/remove-item', postData).then(function (response) {
+                    axios.post('/cart/remove-item', postData).then(function (response) {
                         $(".notify").css("display", 'block').delay(4000).slideUp(300).html(response.data.success);
                         app.displayItems();
                         app.paypalCheckout();
                     });
                 },
                 emptyCart: function emptyCart() {
-                    axios.post('/public/cart/empty-cart').then(function (response) {
+                    axios.post('/cart/empty-cart').then(function (response) {
                         $(".notify").css("display", 'block').delay(4000).slideUp(300).html(response.data.success);
                         app.displayItems();
                     });
@@ -45351,7 +45351,7 @@ module.exports = function(Chart) {
             methods: {
                 getFeaturedProducts: function getFeaturedProducts() {
                     this.loading = true;
-                    axios.all([axios.get('/public/featured'), axios.get('/public/get-products')]).then(axios.spread(function (featuredResponse, productsResponse) {
+                    axios.all([axios.get('/featured'), axios.get('/get-products')]).then(axios.spread(function (featuredResponse, productsResponse) {
                         app.featured = featuredResponse.data.featured;
                         app.products = productsResponse.data.products;
                         app.count = productsResponse.data.count;
@@ -45370,7 +45370,7 @@ module.exports = function(Chart) {
                     this.loading = true;
                     var token = $('.display-products').data('token');
                     var data = $.param({ next: 2, token: token, count: this.count });
-                    axios.post('/public/load-more', data).then(function (response) {
+                    axios.post('/load-more', data).then(function (response) {
                         app.products = response.data.products;
                         app.count = response.data.count;
                         app.loading = false;
@@ -45412,7 +45412,7 @@ module.exports = function(Chart) {
                 token = $('.product').data('token');
             }
             var postData = $.param({ product_id: id, token: token });
-            axios.post('/public/cart', postData).then(function (response) {
+            axios.post('/cart', postData).then(function (response) {
                 callback(response.data.success);
             });
         },
@@ -45446,7 +45446,7 @@ module.exports = function(Chart) {
             methods: {
                 getProductDetails: function getProductDetails() {
                     this.loading = true;
-                    axios.get('/public/product-details/' + this.productId).then(function (response) {
+                    axios.get('/product-details/' + this.productId).then(function (response) {
                         app.product = response.data.product;
                         app.category = response.data.category;
                         app.subCategory = response.data.subCategory;
@@ -45548,7 +45548,7 @@ module.exports = function(Chart) {
                 loading: false,
                 next: 8,
                 targetElement: $('.display-products'),
-                loadMoreEndpoint: '/public/products/category/load-more'
+                loadMoreEndpoint: '/products/category/load-more'
             },
             methods: {
                 stringLimit: function stringLimit(string, value) {

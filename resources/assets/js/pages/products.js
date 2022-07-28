@@ -10,7 +10,7 @@
                 loading: false,
                 next: 8,
                 targetElement: $('.display-products'),
-                loadMoreEndpoint: '/public/products/category/load-more'
+                loadMoreEndpoint: '/products/category/load-more'
             },
             methods:{
                 stringLimit: function (string, value) {

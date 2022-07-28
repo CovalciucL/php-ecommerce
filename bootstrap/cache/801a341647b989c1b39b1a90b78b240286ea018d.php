@@ -1,7 +1,7 @@
 <?php if(isset($detail['product'])): ?>
     <tr>
         <td>
-            <img src="/public/<?php echo e($detail['product']['image_path']); ?>"
+            <img src="/<?php echo e($detail['product']['image_path']); ?>"
                  alt="<?php echo e($detail['product']['name']); ?>" height="40" width="40" >
         </td>
         <td><?php echo e($detail['product']['name']); ?></td>

@@ -31,12 +31,12 @@
                             <tbody>
                                 <tr v-for="item in items">
                                     <td class="medium-text-center">
-                                        <a :href="'/public/product/' + item.id">
-                                            <img :src="'/public/' + item.image" height="60px" width="60px" alt="item.name">
+                                        <a :href="'/product/' + item.id">
+                                            <img :src="'/' + item.image" height="60px" width="60px" alt="item.name">
                                         </a>
                                     </td>
                                     <td>
-                                        <h5><a :href="'/public/product/' + item.id">@{{ item.name }}</a></h5>
+                                        <h5><a :href="'/product/' + item.id">@{{ item.name }}</a></h5>
                                         Status:
                                         <span v-if="item.stock > 1" style="color: #00AA00;">In Stock</span>
                                         <span v-else style="color: #ff0000;">Out of Stock</span>
@@ -99,7 +99,7 @@
                             <button @click="emptyCart()" class="button secondary">
                                 Empty Cart
                             </button>
-                            <a href="/public/" class="button secondary">
+                            <a href="/" class="button secondary">
                                 Continue Shopping &nbsp; <i class="fa-solid fa-cart-shopping"></i>
                             </a>
                             @if(isAuthenticated())
@@ -110,7 +110,7 @@
                             <span id="paypalInfo" data-app-env="{{getenv('APP_ENV')}}" data-app-baseurl="{{getenv('APP_URL')}}"></span>
                             @else
                             <span >
-                                <a href="/public/login" class="button success">
+                                <a href="/login" class="button success">
                                     Checkout &nbsp; <i class="fa-solid fa-credit-card"></i>
                                 </a>
                             </span>

@@ -10,7 +10,7 @@
                         Create Account
                     </h2>
                     <?php echo $__env->make('includes.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                    <form action="/public/register" method="POST">
+                    <form action="/register" method="POST">
                     <input type="text" name="fullname" placeholder="Your Name" value="<?php echo e(\App\Classes\Request::old('post','fullname')); ?>">
                     <input type="text" name="email" placeholder="Your Email" value="<?php echo e(\App\Classes\Request::old('post','email')); ?>">
                     <input type="text" name="username" placeholder="Your Username" value="<?php echo e(\App\Classes\Request::old('post','username')); ?>">
@@ -19,7 +19,7 @@
                     <input type="hidden" name="token" value="<?php echo e(\App\Classes\CSRFToken::token()); ?>">
                     <button class="button float-right">Register</button>
                 </form>
-                <p>Already Registred? <a href="/public/login"> Login Here</a></p>
+                <p>Already Registred? <a href="/login"> Login Here</a></p>
                 </div>
             </div>
         </section>

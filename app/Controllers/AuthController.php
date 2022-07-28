@@ -14,7 +14,7 @@ class AuthController extends BaseController
     public function __construct()
     {   
         if(isAuthenticated()){
-            Redirect::to('/public/');
+            Redirect::to('/');
         }
     }
     public function showRegisterForm()
@@ -84,11 +84,11 @@ class AuthController extends BaseController
                         Session::add('SESSION_USER_ID', $user->id);
                         Session::add('SESSION_USER_NAME', $user->username);
                         if($user->role == 'admin'){
-                            Redirect::to('/public/admin');
+                            Redirect::to('/admin');
                         }elseif($user->role == 'user' && Session::has('user_cart')){
-                            Redirect::to('/public/cart');
+                            Redirect::to('/cart');
                         }else{
-                            Redirect::to('/public/');
+                            Redirect::to('/');
                         }
                     }
                 }else{
@@ -111,6 +111,6 @@ class AuthController extends BaseController
                 session_regenerate_id(true);
             }
         }
-        Redirect::to('/public/');
+        Redirect::to('/');
     }
 };

@@ -8,7 +8,7 @@
             var name = $("#item-name-" + id).val();
             $.ajax({
                 type: 'POST',
-                url: '/public/admin/product/categories/' + id + '/edit',
+                url: '/admin/product/categories/' + id + '/edit',
                 data: {
                     token:token, name: name
                 },
@@ -44,7 +44,7 @@
             
             $.ajax({
                 type: 'POST',
-                url: '/public/admin/product/subcategory/' + id + '/edit',
+                url: '/admin/product/subcategory/' + id + '/edit',
                 data: {
                     token:token, name: name, category_id:category_id
                 },

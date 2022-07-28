@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store - <?php echo $__env->yieldContent('title'); ?></title>
 
-    <link rel="stylesheet" href="/public/css/all.css">
+    <link rel="stylesheet" href="/css/all.css">
     <script src="https://kit.fontawesome.com/a7178e0ca6.js" crossorigin="anonymous"></script>
 </head>
 <body data-page-id="<?php echo $__env->yieldContent('data-page-id'); ?>">
     <?php echo $__env->yieldContent('body'); ?>
-    <script src="/public/js/all.js"></script>
+    <script src="/js/all.js"></script>
     <?php echo $__env->yieldContent('stripe-checkout'); ?>
     <?php echo $__env->yieldContent('paypal-checkout'); ?>
 </body>

@@ -13,7 +13,7 @@
         @include('includes.message')
        <div class="grid-x grid-padding-x">
             <div class="small-12 medium-11 cell">
-                <a href="/public/admin/product/create" class="button float-right">
+                <a href="/admin/product/create" class="button float-right">
                 <i class="fa-solid fa-plus"></i>   
             </a>
             </div>
@@ -46,7 +46,7 @@
                                     <td>{{$product['added']}}</td>
                                     <td width="50" class="text-right">
                                         <span data-tooltip aria-haspopup="true" class="has-tip top" data-disable-hover="false" tabindex="1" title="Edit Product">
-                                            <a href="/public/admin/product/{{$product['id']}}/edit"> <i class="fa-solid fa-pencil"></i></a>
+                                            <a href="/admin/product/{{$product['id']}}/edit"> <i class="fa-solid fa-pencil"></i></a>
                                         </span>
                                     </td>
                                 </tr>

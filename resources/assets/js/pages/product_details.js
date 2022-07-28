@@ -15,7 +15,7 @@
             methods:{
                 getProductDetails: function(){
                     this.loading = true;
-                    axios.get('/public/product-details/' + this.productId)
+                    axios.get('/product-details/' + this.productId)
                     .then(function(response){
                             app.product = response.data.product;
                             app.category = response.data.category;

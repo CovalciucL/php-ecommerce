@@ -11,10 +11,10 @@
                 <nav aria-label="You are here:" role="navigation">
                     <ul class="breadcrumbs">
                         <li>
-                            <a :href="'/public/products/category/' + category.slug">@{{ category.name }}</a>
+                            <a :href="'/products/category/' + category.slug">@{{ category.name }}</a>
                         </li>
                     <li>
-                        <a :href="'/public/products/category/' + category.slug + '/' + subCategory.slug">@{{ subCategory.name }}</a>
+                        <a :href="'/products/category/' + category.slug + '/' + subCategory.slug">@{{ subCategory.name }}</a>
                     </li>
                       <li>@{{product.name}}</li>
                     </ul>
@@ -23,7 +23,7 @@
             <div class="grid-x collapse">
                 <div class="small-12 medium-5 large-4 cell">
                    <div>
-                    <img :src="'/public/' + product.image_path"  width="100%" height="200"> <br>
+                    <img :src="'/' + product.image_path"  width="100%" height="200"> <br>
                    </div>
                 </div>
                 <div class="small-12 medium-7 large-8 cell">
@@ -46,16 +46,16 @@
                 <h2>Similar Products</h2>
                 <div class="grid-x grid-padding-x medium-up-2 large-up-4">
                     <div class="small-12 cell" v-for="similar in similarProducts">
-                        <a :href="'/public/product/'+ similar.id">
+                        <a :href="'/product/'+ similar.id">
                             <div class="card" data-equalizer-watch>
                                 <div class="card-section">
-                                    <img :src="'/public/' + similar.image_path" width="100%" height="200">
+                                    <img :src="'/' + similar.image_path" width="100%" height="200">
                                 </div>
                                 <div class="card-section">
                                     <p>
                                         @{{stringLimit(similar.name, 15)}}
                                     </p>
-                                    <a :href="'/public/product/' + similar.id" class="button more expanded">
+                                    <a :href="'/product/' + similar.id" class="button more expanded">
                                         See More
                                     </a>
                                     <button v-if="similar.quantity > 0" @click.prevent="addToCart(similar.id)" class="button cart expanded">

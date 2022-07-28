@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - <?php echo $__env->yieldContent('title'); ?></title>
 
-    <link rel="stylesheet" href="/public/css/all.css">
+    <link rel="stylesheet" href="/css/all.css">
     <script src="https://kit.fontawesome.com/a7178e0ca6.js" crossorigin="anonymous"></script>
 </head>
 <body data-page-id="<?php echo $__env->yieldContent('data-page-id'); ?>">
@@ -20,6 +20,6 @@
           </div>
         <?php echo $__env->yieldContent('content'); ?>
     </div>
-    <script src="/public/js/all.js"></script>
+    <script src="/js/all.js"></script>
 </body>
 </html><?php /**PATH /var/www/html/resources/views/admin/layout/base.blade.php ENDPATH**/ ?>

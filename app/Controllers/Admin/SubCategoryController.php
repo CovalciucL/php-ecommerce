@@ -17,7 +17,7 @@ class SubCategoryController extends BaseController
     public function __construct() 
     {
         if(!Role::middleware('admin')){
-            Redirect::to('/public/');
+            Redirect::to('/');
         }
     }
     public function store()
@@ -118,7 +118,7 @@ class SubCategoryController extends BaseController
                 
                 Session::add('success', 'Subcategory Deleted');
 
-                Redirect::to('/public/admin/product/categories');
+                Redirect::to('/admin/product/categories');
 
                 exit;
             } else {

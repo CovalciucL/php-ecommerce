@@ -27,7 +27,7 @@ class ProductController extends BaseController
     public function __construct()
     {   
         if(!Role::middleware('admin')){
-            Redirect::to('/public/');
+            Redirect::to('/');
         }
         $this->categories = Category::all();
 
@@ -172,7 +172,7 @@ class ProductController extends BaseController
                 
                 $product->save();
                 Session::add('success', 'Record Update');
-                Redirect::to('/public/admin/products');
+                Redirect::to('/admin/products');
             } else {
                 throw new \Exception('Token mismatch');
             }
@@ -189,7 +189,7 @@ class ProductController extends BaseController
 
                 Session::add('success', 'Product Deleted');
 
-                Redirect::to('/public/admin/products');
+                Redirect::to('/admin/products');
 
                 exit;
             } else {

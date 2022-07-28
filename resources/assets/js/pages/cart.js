@@ -10,7 +10,7 @@
                     stripeToken: token.id,
                     stripeEmail: token.email
                 })
-                axios.post('/public/cart/payment',data).then(function(response){
+                axios.post('/cart/payment',data).then(function(response){
                     $(".notify").css("display", 'block').delay(4000).slideUp(300)
                     .html(response.data.success);
                     app.displayItems();
@@ -32,7 +32,7 @@
             methods: {
                displayItems: function () {
                     this.loading = true;
-                    axios.get('/public/cart/items').then(function (response) {
+                    axios.get('/cart/items').then(function (response) {
                            if(response.data.fail){
                                app.fail = true;
                                app.message = response.data.fail;
@@ -47,14 +47,14 @@
                },
                updateQuantity: function (product_id, operator) {
                    var postData = $.param({product_id:product_id, operator:operator});
-                   axios.post('/public/cart/update-qty', postData).then(function () {
+                   axios.post('/cart/update-qty', postData).then(function () {
                        app.displayItems();
                        app.paypalCheckout();
                    })
                },
                removeItem: function (index) {
                     var postData = $.param({item_index:index});
-                    axios.post('/public/cart/remove-item', postData).then(function (response) {
+                    axios.post('/cart/remove-item', postData).then(function (response) {
                         $(".notify").css("display", 'block').delay(4000).slideUp(300)
                             .html(response.data.success);
                         app.displayItems();
@@ -62,7 +62,7 @@
                     })
                 },
                 emptyCart: function(){
-                    axios.post('/public/cart/empty-cart').then(function (response) {
+                    axios.post('/cart/empty-cart').then(function (response) {
                         $(".notify").css("display", 'block').delay(4000).slideUp(300)
                             .html(response.data.success);
                         app.displayItems();

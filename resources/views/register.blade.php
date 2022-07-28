@@ -11,7 +11,7 @@
                         Create Account
                     </h2>
                     @include('includes.message')
-                    <form action="/public/register" method="POST">
+                    <form action="/register" method="POST">
                     <input type="text" name="fullname" placeholder="Your Name" value="{{\App\Classes\Request::old('post','fullname')}}">
                     <input type="text" name="email" placeholder="Your Email" value="{{\App\Classes\Request::old('post','email')}}">
                     <input type="text" name="username" placeholder="Your Username" value="{{\App\Classes\Request::old('post','username')}}">
@@ -20,7 +20,7 @@
                     <input type="hidden" name="token" value="{{\App\Classes\CSRFToken::token()}}">
                     <button class="button float-right">Register</button>
                 </form>
-                <p>Already Registred? <a href="/public/login"> Login Here</a></p>
+                <p>Already Registred? <a href="/login"> Login Here</a></p>
                 </div>
             </div>
         </section>

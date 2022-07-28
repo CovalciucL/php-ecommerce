@@ -9,7 +9,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/public/admin/product/subcategory/create',
+                url: '/admin/product/subcategory/create',
                 data: {
                     token:token, name: name, category_id:category_id
                 },

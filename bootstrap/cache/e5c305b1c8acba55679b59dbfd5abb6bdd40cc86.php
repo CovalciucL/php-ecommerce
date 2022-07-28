@@ -12,7 +12,7 @@
         <?php echo $__env->make('includes.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <div class="grid-x grid-padding-x align-center">
             <div class="small-12 medium-5 cell ">
-                <form action="/public/admin/product/categories" method="POST">
+                <form action="/admin/product/categories" method="POST">
                     <div class="input-group">
                         <input type="text" class="input-group-field" name="name" placeholder="Category Name">
                         <input type="hidden" name="token" value="<?php echo e(\App\Classes\CSRFToken::token()); ?>"/>
@@ -49,7 +49,7 @@
                                             <a data-open="item-<?php echo e($category['id']); ?>"><i class="fa-solid fa-pencil"></i></a>
                                         </span>
                                         <span style="display: inline-flex" data-tooltip aria-haspopup="true" class="has-tip top" data-disable-hover="false" tabindex="1" title="Delete Category">
-                                            <form action="/public/admin/product/categories/<?php echo e($category['id']); ?>/delete" method="POST" class="delete-item">
+                                            <form action="/admin/product/categories/<?php echo e($category['id']); ?>/delete" method="POST" class="delete-item">
                                                <input type="hidden" name="token" value="<?php echo e(\App\Classes\CSRFToken::token()); ?>"/>
                                                <button type="submit"><i class="fa-solid fa-xmark delete"></i></button>
                                             </form>
@@ -72,7 +72,7 @@
                                                     </div>
                                                 </div>
                                             </form>
-                                            <a href="/public/admin/product/categories" class="close-button" aria-label="Close modal" type="button">
+                                            <a href="/admin/product/categories" class="close-button" aria-label="Close modal" type="button">
                                               <span aria-hidden="true">&times;</span>
                                             </a>
                                         </div>
@@ -95,7 +95,7 @@
                                                     </div>
                                                 </div>
                                             </form>
-                                            <a href="/public/admin/product/categories" class="close-button" aria-label="Close modal" type="button">
+                                            <a href="/admin/product/categories" class="close-button" aria-label="Close modal" type="button">
                                               <span aria-hidden="true">&times;</span>
                                             </a>
                                         </div>
@@ -142,7 +142,7 @@
                                             <a data-open="item-subcategory-<?php echo e($subcategory['id']); ?>"><i class="fa-solid fa-pencil"></i></a>
                                         </span>
                                         <span style="display: inline-flex" data-tooltip aria-haspopup="true" class="has-tip top" data-disable-hover="false" tabindex="1" title="Delete Subcategory">
-                                            <form action="/public/admin/product/subcategory/<?php echo e($subcategory['id']); ?>/delete" method="POST" class="delete-item">
+                                            <form action="/admin/product/subcategory/<?php echo e($subcategory['id']); ?>/delete" method="POST" class="delete-item">
                                                <input type="hidden" name="token" value="<?php echo e(\App\Classes\CSRFToken::token()); ?>"/>
                                                <button type="submit"><i class="fa-solid fa-xmark delete"></i></button>
                                             </form>
@@ -175,7 +175,7 @@
                                                     </div>
                                                 </div>
                                             </form>
-                                            <a href="/public/admin/product/categories" class="close-button" aria-label="Close modal" type="button">
+                                            <a href="/admin/product/categories" class="close-button" aria-label="Close modal" type="button">
                                               <span aria-hidden="true">&times;</span>
                                             </a>
                                         </div>

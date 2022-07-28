@@ -23,7 +23,7 @@ class ProductCategoryController extends BaseController
     public function __construct()
     {   
         if(!Role::middleware('admin')){
-            Redirect::to('/public/');
+            Redirect::to('/');
         }
         $total = Category::all()->count();
         $subTotal = SubCategory::all()->count();
@@ -133,7 +133,7 @@ class ProductCategoryController extends BaseController
                 }
                 Session::add('success', 'Category Deleted');
 
-                Redirect::to('/public/admin/product/categories');
+                Redirect::to('/admin/product/categories');
 
                 exit;
             } else {

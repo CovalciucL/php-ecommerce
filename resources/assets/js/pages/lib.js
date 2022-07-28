@@ -15,7 +15,7 @@
                 token = $('.product').data('token');
             }
             var postData = $.param({product_id:id, token:token});
-            axios.post('/public/cart', postData).then(function(response){
+            axios.post('/cart', postData).then(function(response){
                 callback(response.data.success);
             })
         },
