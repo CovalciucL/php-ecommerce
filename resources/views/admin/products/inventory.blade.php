@@ -37,7 +37,7 @@
                         <tbody>
                             @foreach($products as $product)
                                 <tr>
-                                    <td><img src="/public/{{$product['image_path']}}" alt="{{$product['name']}}" height="40" width="40"></td>
+                                    <td><img src="/{{$product['image_path']}}" alt="{{$product['name']}}" height="40" width="40"></td>
                                     <td>{{$product['name']}}</td>
                                     <td>{{$product['price']}}</td>
                                     <td>{{$product['quantity']}}</td>
