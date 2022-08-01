@@ -12,7 +12,7 @@
         <?php echo $__env->make('includes.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
        <div class="grid-x grid-padding-x">
             <div class="small-12 medium-11 cell">
-                <a href="/public/admin/product/create" class="button float-right">
+                <a href="/admin/product/create" class="button float-right">
                 <i class="fa-solid fa-plus"></i>   
             </a>
             </div>
@@ -36,7 +36,7 @@
                         <tbody>
                             <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td><img src="/public/<?php echo e($product['image_path']); ?>" alt="<?php echo e($product['name']); ?>" height="40" width="40"></td>
+                                    <td><img src="/<?php echo e($product['image_path']); ?>" alt="<?php echo e($product['name']); ?>" height="40" width="40"></td>
                                     <td><?php echo e($product['name']); ?></td>
                                     <td><?php echo e($product['price']); ?></td>
                                     <td><?php echo e($product['quantity']); ?></td>
@@ -45,7 +45,7 @@
                                     <td><?php echo e($product['added']); ?></td>
                                     <td width="50" class="text-right">
                                         <span data-tooltip aria-haspopup="true" class="has-tip top" data-disable-hover="false" tabindex="1" title="Edit Product">
-                                            <a href="/public/admin/product/<?php echo e($product['id']); ?>/edit"> <i class="fa-solid fa-pencil"></i></a>
+                                            <a href="/admin/product/<?php echo e($product['id']); ?>/edit"> <i class="fa-solid fa-pencil"></i></a>
                                         </span>
                                     </td>
                                 </tr>

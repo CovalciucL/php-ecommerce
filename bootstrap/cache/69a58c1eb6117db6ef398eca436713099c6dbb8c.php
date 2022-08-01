@@ -21,5 +21,6 @@
         <?php echo $__env->yieldContent('content'); ?>
     </div>
     <script src="/js/all.js"></script>
+    <script src="/js/ecommerce.js"></script>
 </body>
 </html><?php /**PATH /var/www/html/resources/views/admin/layout/base.blade.php ENDPATH**/ ?>

@@ -10,7 +10,7 @@
             </div>
         </div>
         <?php echo $__env->make('includes.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-        <form action="/public/admin/product/edit" method="POST" enctype="multipart/form-data">
+        <form action="/admin/product/edit" method="POST" enctype="multipart/form-data">
             <div class="small-12 medium-11">
                 <div class="grid-x grid-padding-x">
                     <div class="small-12 medium-6 cell">
@@ -87,7 +87,7 @@
                 <table data-form="deleteForm">
                     <tr >
                         <td style="border:1px solid white;">
-                            <form action="/public/admin/product/<?php echo e($product->id); ?>/delete" method="POST" class="delete-item">
+                            <form action="/admin/product/<?php echo e($product->id); ?>/delete" method="POST" class="delete-item">
                                 <input type="hidden" name="token" value="<?php echo e(\App\Classes\CSRFToken::token()); ?>"/>
                                 <button type="submit" class="button alert">Delete Product</button>
                              </form>

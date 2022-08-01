@@ -115,7 +115,6 @@
                             },
                             // Execute the payment
                             onAuthorize: function(data) {
-                                console.log(data)
                               return paypal.request.post(EXECUTE_PAYMENT_ROUTE,{
                                 paymentId: data.paymentId,
                                 payerId: data.payerID,

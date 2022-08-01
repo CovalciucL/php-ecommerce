@@ -51,7 +51,7 @@ class ProductController extends BaseController
         $categories = $this->categories;
         return view('admin/products/create', compact('categories'));
     }
-
+    
     public function store()
     {
         if (Request::has('post')) {
@@ -64,8 +64,7 @@ class ProductController extends BaseController
                     'price' => ['required' => true, 'minLength' => 2, 'number' => true],
                     'quantity' => ['required' => true],
                     'category' => ['required' => true],
-                    'description' => ['required' => true, 'mixed' => true, 'minLength' => 3, 'maxLength' => 500,]
-
+                    'description' => ['required' => true, 'mixed' => true, 'minLength' => 3, 'maxLength' => 500,],
                 ];
 
                 $validate = new ValidateRequest;
@@ -73,21 +72,23 @@ class ProductController extends BaseController
 
                 $file = Request::get('file');
                 isset($file->productImage->name) ? $filename = $file->productImage->name : $filename = '';
-
+             
+                
                 if (empty($filename)) {
                     $file_error['productImage'] = ['Product Image is required'];
                 } elseif (!UploadFile::isImage($filename)){
                     $file_error['productImage'] = ['Image is invalid, please try again'];
                 }
-
-                if ($validate->hasError()) {
+          
+                if ($validate->hasError() || !empty($file_error)) {
                     $response = $validate->getErrorMessages();
-                    count($file_error) ? $errors = array_merge($response, $file_error) : $errors = $response;
+                    is_array($file_error) ? $errors = array_merge($response, $file_error) : $errors = $response;
+                
                     return view('admin/products/create',[
                         'categories' => $this->categories, 'errors' => $errors,
                     ]);
                 }
-
+               
                 $ds = DIRECTORY_SEPARATOR;
                 $temp_file = $file->productImage->tmp_name;
                 $image_path = UploadFile::move($temp_file, "images{$ds}uploads{$ds}products", $filename)->path();

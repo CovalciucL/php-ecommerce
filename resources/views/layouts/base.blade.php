@@ -12,6 +12,7 @@
 <body data-page-id="@yield('data-page-id')">
     @yield('body')
     <script src="/js/all.js"></script>
+    <script src="/js/ecommerce.js"></script>
     @yield('stripe-checkout')
     @yield('paypal-checkout')
 </body>

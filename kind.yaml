@@ -15,3 +15,10 @@ nodes:
   - containerPort: 443
     hostPort: 443
     protocol: TCP
+- role: worker
+  extraMounts:
+  - hostPath: /home/black/Desktop/code/simpleEcommerce/
+    containerPath: /app
+    readOnly: false
+    selinuxRelabel: false
+    propagation: HostToContainer

@@ -42,7 +42,7 @@
     <div class="top-bar-right">
       <ul class="dropdown menu vertical medium-horizontal">
         <?php if(isAuthenticated()): ?> 
-          <li><a href="#"><?php echo e(user()->username); ?>  </a></li>
+          <li><a href="/admin"><?php echo e(user()->username); ?>  </a></li>
           <li>
             <a href="/cart"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
           </li>

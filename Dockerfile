@@ -14,6 +14,7 @@ FROM base AS dev-stage
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 RUN curl -sLf -o /dev/null 'https://deb.nodesource.com/node_8.x/dists/bullseye/Release' | bash
 RUN apt -y install nodejs
+RUN npm run watch
 
 FROM composer:2.0.8 AS vendors
 

@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: laur1314/php-store
   pullPolicy: IfNotPresent
-  tag: latest
+  tag: 1.0.0
 
 
 service:
@@ -13,6 +13,11 @@ service:
 
 container:
   name: ecommerce
+  volumes:
+    name: app
+  volumeMounts:
+    name: app
+    mountPath: /var/www/html/
 
 mysql:
   auth:
@@ -22,6 +27,23 @@ mysql:
     database: store
   ports:
     port: 3306
+    primary:
+  persistence:
+    existingClaim: mysql
+  volumePermissions:
+    enabled: true
+  initdbScripts:
+    init_script.sh: |
+    #!/bin/bash
+    
+  # volumes:
+  #   name: mysql
+  #   persistentVolumeClaim:
+  #     claimName: mysql
+  # volumeMounts:
+  #   name: mysql
+  #   mountPath: /var/www/html/data/ecommerce.sql
+
 environments:
   DB_HOST: prod-mysql
   DB_NAME: store

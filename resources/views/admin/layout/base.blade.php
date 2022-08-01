@@ -21,5 +21,6 @@
         @yield('content')
     </div>
     <script src="/js/all.js"></script>
+    <script src="/js/ecommerce.js"></script>
 </body>
 </html>

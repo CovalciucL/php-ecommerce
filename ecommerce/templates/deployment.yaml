@@ -14,6 +14,8 @@ spec:
       labels:
         {{- include "ecommerce.selectorLabels" . | nindent 8 }}
     spec:
+      securityContext:
+        runAsUser: 0
       containers:
         - name: {{ .Values.container.name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -33,5 +35,11 @@ spec:
             value: {{ .Values.environments.DB_PASSWORD}}  
           - name: APP_URL
             value: {{ .Values.environments.APP_URL}}
-
-          
+          volumeMounts: 
+            - mountPath: {{ .Values.container.volumeMounts.mountPath }}
+              name: {{ .Values.container.volumeMounts.name }}
+      volumes:
+      - name: app
+        hostPath:
+          path: /app
+          type: Directory

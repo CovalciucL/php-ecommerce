@@ -41,7 +41,7 @@
     <div class="top-bar-right">
       <ul class="dropdown menu vertical medium-horizontal">
         @if(isAuthenticated()) 
-          <li><a href="#">{{user()->username}}  </a></li>
+          <li><a href="/admin">{{user()->username}}  </a></li>
           <li>
             <a href="/cart"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
           </li>
