@@ -3,8 +3,7 @@ replicaCount: 1
 image:
   repository: laur1314/php-store
   pullPolicy: IfNotPresent
-  tag: 1.0.0
-
+  tag: 1.0.2
 
 service:
   type: NodePort
@@ -21,34 +20,56 @@ container:
 
 mysql:
   auth:
-    username: user
     rootPassword: test
-    password: user
-    database: store
-  ports:
-    port: 3306
-    primary:
-  persistence:
-    existingClaim: mysql
   volumePermissions:
     enabled: true
   initdbScripts:
-    init_script.sh: |
-    #!/bin/bash
-    
-  # volumes:
-  #   name: mysql
-  #   persistentVolumeClaim:
-  #     claimName: mysql
-  # volumeMounts:
-  #   name: mysql
-  #   mountPath: /var/www/html/data/ecommerce.sql
+    init.sh: |
+      mysql -uroot -ptest CREATE DATABASE store;
+      mysql -uroot -ptest store < /bitnami/mysql/ecommerce.sql;
+  primary:
+    persistence:
+      existingClaim: mysql
+    configuration: |-
+      [mysqld]
+      default_authentication_plugin=mysql_native_password
+      skip-name-resolve
+      explicit_defaults_for_timestamp
+      basedir=/opt/bitnami/mysql
+      plugin_dir=/opt/bitnami/mysql/lib/plugin
+      port=3306
+      socket=/opt/bitnami/mysql/tmp/mysql.sock
+      datadir=/bitnami/mysql/data
+      tmpdir=/opt/bitnami/mysql/tmp
+      max_allowed_packet=16M
+      bind-address=0.0.0.0
+      pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
+      log-error=/opt/bitnami/mysql/logs/mysqld.log
+      character-set-server=UTF8
+      collation-server=utf8_general_ci
+      slow_query_log=0
+      slow_query_log_file=/opt/bitnami/mysql/logs/mysqld.log
+      long_query_time=10.0
+      sql_mode = NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+      [client]
+      port=3306
+      socket=/opt/bitnami/mysql/tmp/mysql.sock
+      default-character-set=UTF8
+      plugin_dir=/opt/bitnami/mysql/lib/plugin
+      [manager]
+      port=3306
+      socket=/opt/bitnami/mysql/tmp/mysql.sock
+      pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
+
+
+
+
 
 environments:
   DB_HOST: prod-mysql
   DB_NAME: store
-  DB_USERNAME: user
-  DB_PASSWORD: user
+  DB_USERNAME: root
+  DB_PASSWORD: test
   APP_URL: http://ecommerce.local/
   # APP_ENV: production
 

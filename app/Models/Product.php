@@ -12,7 +12,7 @@ class Product extends Model
 
     public $timestamps = true;
     protected $fillable = [
-        'name', 'price', 'description', 'category_id', 
+        'name', 'price', 'description', 'category_id','sub_category_id', 
         'image_path', 'quantity'
     ];
     protected $dates = ['deleted_at'];

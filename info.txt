@@ -1,4 +1,0 @@
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
-kubectl exec -i prod-mysql-0 -- mysql -uuser -puser store < /home/black/Downloads/ecommerce.sql 
-kubectl exec -i prod-mysql-0 -- mysql -uroot -ptest
- SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));

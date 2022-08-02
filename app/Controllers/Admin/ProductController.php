@@ -20,7 +20,6 @@ class ProductController extends BaseController
     public $categories;
     public $products;
     public $subcategories;
-    public $subcategories_links;
 
     public $links;
 
@@ -34,8 +33,6 @@ class ProductController extends BaseController
         $total = Product::all()->count();
         
         list($this->products, $this->links) = paginate(5, $total, $this->table_name, new Product());
-        // list($this->subcategories, $this->subcategories_links) = paginate(5, $subTotal,'sub_categories', new SubCategory);
-
     }
     
     public function show()
@@ -92,7 +89,7 @@ class ProductController extends BaseController
                 $ds = DIRECTORY_SEPARATOR;
                 $temp_file = $file->productImage->tmp_name;
                 $image_path = UploadFile::move($temp_file, "images{$ds}uploads{$ds}products", $filename)->path();
-                
+            
                 Product::create([
                     'name' => $request->name,
                     'description' => $request->description,
@@ -113,7 +110,7 @@ class ProductController extends BaseController
             }
         }   
     }
-
+    
     public function showEditProductForm($id)
     {
         $categories = $this->categories;
@@ -142,15 +139,15 @@ class ProductController extends BaseController
                 $file = Request::get('file');
                 isset($file->productImage->name) ? $filename = $file->productImage->name : $filename = '';
 
-                if (isset($file->productImage->name) && !UploadFile::isImage($filename)){
+                if (!isset($file->productImage->name) && !UploadFile::isImage($filename)){
                     $file_error['productImage'] = ['Image is invalid, please try again'];
                 }
 
                 if ($validate->hasError()) {
                     $response = $validate->getErrorMessages();
-                    count($file_error) ? $errors = array_merge($response, $file_error) : $errors = $response;
-                    return view('admin/products/create',[
-                        'categories' => $this->categories, 'errors' => $errors,
+                    is_array($file_error) ? $errors = array_merge($response, $file_error) : $errors = $response;
+                    return view('admin/products/edit',[
+                        'categories' => $this->categories,'product_id' => $request->product_id, 'errors' => $errors,
                     ]);
                 }
 
@@ -198,6 +195,7 @@ class ProductController extends BaseController
             }
         }   
     }
+
     public function getSubcategories($id)
     {
         $subcategories = SubCategory::where('category_id', $id)->get();

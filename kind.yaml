@@ -22,3 +22,8 @@ nodes:
     readOnly: false
     selinuxRelabel: false
     propagation: HostToContainer
+  - hostPath: /home/black/Desktop/code/simpleEcommerce/data
+    containerPath: /database
+    readOnly: false
+    selinuxRelabel: false
+    propagation: HostToContainer

@@ -35,6 +35,7 @@ spec:
             value: {{ .Values.environments.DB_PASSWORD}}  
           - name: APP_URL
             value: {{ .Values.environments.APP_URL}}
+      {{- if ne .Values.environments.APP_ENV "production"}}
           volumeMounts: 
             - mountPath: {{ .Values.container.volumeMounts.mountPath }}
               name: {{ .Values.container.volumeMounts.name }}
@@ -43,3 +44,5 @@ spec:
         hostPath:
           path: /app
           type: Directory
+      {{- end }}
+      

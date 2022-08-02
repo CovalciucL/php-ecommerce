@@ -13,7 +13,7 @@ class ValidateRequest
         'minLength' => 'The :attribute field must be a minimum of :policy characters',
         'maxLength' => 'The :attribute field must be a maximum of :policy characters',
         'mixed' => 'The :attribute field can contain letters, numbers, dash and space only',
-        'number' => 'The :attribute field cannon contain letters',
+        'number' => 'The :attribute field can not contain letters',
         'email' => 'Email address is not valid',
         'unique' => 'That :attribute is already taken, please try another one'
     ];
