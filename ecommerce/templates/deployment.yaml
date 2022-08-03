@@ -26,7 +26,7 @@ spec:
               protocol: TCP
           env:
           - name: DB_HOST
-            value: {{ .Values.environments.DB_HOST}}
+            value: {{ .Values.environments.DB_HOST | default (print .Release.Name "-mysql") }}
           - name: DB_NAME
             value: {{ .Values.environments.DB_NAME}} 
           - name: DB_USERNAME

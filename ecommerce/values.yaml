@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: laur1314/php-store
   pullPolicy: IfNotPresent
-  tag: 1.1
+  tag: 1.3
 
 service:
   type: NodePort
@@ -75,9 +75,10 @@ environments:
 
 ingress:
   enabled: true
-
+ 
   hosts:
     - host: ecommerce.local
       paths:
         - path: /
           pathType: ImplementationSpecific
+  

@@ -3,6 +3,19 @@ environments:
   APP_ENV: production
 
 ingress:
+  annotations: 
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.org/redirect-to-https: "false"
+    acme.cert-manager.io/http01-edit-in-place: "true"
+    cert-manager.io/cluster-issuer: "cert-manager-production"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    
+  tls:
+   - secretName: ecommerce-web-7-certificate
+     hosts:
+       - ecommerce.web7.md
   hosts:
     - host: ecommerce.web7.md
       paths:

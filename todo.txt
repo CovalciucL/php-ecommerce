@@ -1,0 +1,7 @@
+cards for product
+buttons
+cart
+inputs
+header
+menu
+carousel

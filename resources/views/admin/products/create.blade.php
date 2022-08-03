@@ -27,11 +27,9 @@
                     <div class="small-12 medium-6 cell">
                         <label>Product Category:
                             <select name="category" id="product-category">
-                                <option value="{{\App\Classes\Request::old('post','category')?:""}}">
-                                    {{\App\Classes\Request::old('post','category')?:"Select Category"}}
-                                </option>
                                 @foreach ($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                <option {{\App\Classes\Request::old('post','category') == $category->id ? 'selected':''}} 
+                                    value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
                         </label>
@@ -39,9 +37,8 @@
                     <div class="small-12 medium-6 cell">
                         <label>Product Subcategory:
                             <select name="subcategory" id="product-subcategory">
-                                <option value="{{\App\Classes\Request::old('post','subcategory')?:""}}">
-                                    {{\App\Classes\Request::old('post','subcategory')?:"Select Subcategory"}}
-                                </option>
+                                <select name="subcategory" id="product-subcategory">
+                                </select>
                             </select>
                         </label>
                     </div>
