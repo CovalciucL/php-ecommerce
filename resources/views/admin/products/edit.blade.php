@@ -38,14 +38,13 @@
                             <input type="text" name="price" value="{{\App\Classes\Request::old('post','price')?:$product->price}}">
                         </label>
                     </div>
+                    
                     <div class="small-12 medium-6 cell">
                         <label>Product Category:
                             <select name="category" id="product-category">
-                                <option value="{{\App\Classes\Request::old('post','category')?:$product->category->id}}">
-                                    {{\App\Classes\Request::old('post','category')?:$product->category->name}}
-                                </option>
                                 @foreach ($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                    <option {{\App\Classes\Request::old('post','category') == $category->id || $category->id == $product->category->id ?'selected':''}} 
+                                        value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
                         </label>
@@ -53,9 +52,6 @@
                     <div class="small-12 medium-6 cell">
                         <label>Product Subcategory:
                             <select name="subcategory" id="product-subcategory">
-                                <option value="{{\App\Classes\Request::old('post','subcategory')?:$product->subCategory->id?:""}}">
-                                    {{\App\Classes\Request::old('post','subcategory')?:$product->subCategory->name?:"No record found"}}
-                                </option>
                             </select>
                         </label>
                     </div>
@@ -93,7 +89,6 @@
                 </div>
             </div>
         </form>
-
     </div>
     @include('includes.delete-modal')
 @endsection

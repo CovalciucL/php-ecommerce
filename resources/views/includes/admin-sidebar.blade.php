@@ -2,7 +2,7 @@
   <h3>Admin Panel</h3>
     
   <div class="image-holder text-center">
-    <img src="#" alt="Admin photo">
+    <img src="/images/149071.png" alt="Admin photo">
     <p>{{user()->fullname}}</p>
   </div>
   <ul class="vertical menu">

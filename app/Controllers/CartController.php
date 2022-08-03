@@ -24,7 +24,7 @@ class CartController extends BaseController
         if(getenv('APP_ENV') !== 'production'){
             $this->paypal_base_url = 'https://api-m.sandbox.paypal.com/v1';
         }else{
-            $this->paypal_base_url = 'https://api-m.paypal.com/v1';
+            $this->paypal_base_url = 'https://api-m.sandbox.paypal.com/v1';
         }
     }
     public function show()

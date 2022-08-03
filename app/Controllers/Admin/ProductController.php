@@ -132,7 +132,8 @@ class ProductController extends BaseController
                     'category' => ['required' => true],
                     'description' => ['required' => true, 'mixed' => true, 'minLength' => 3, 'maxLength' => 500,]
                 ];
-
+                $subcategories = SubCategory::where('category_id', $request->category)->get();
+         
                 $validate = new ValidateRequest;
                 $validate->abide($_POST,$rules);
 
@@ -147,10 +148,10 @@ class ProductController extends BaseController
                     $response = $validate->getErrorMessages();
                     is_array($file_error) ? $errors = array_merge($response, $file_error) : $errors = $response;
                     return view('admin/products/edit',[
-                        'categories' => $this->categories,'product_id' => $request->product_id, 'errors' => $errors,
+                        'categories' => $this->categories,'product_id' => $request->product_id, 'subcategories'=>$subcategories, 'errors' => $errors,
                     ]);
                 }
-
+         
                 $product = Product::findOrFail($request->product_id);
                 $product->name = $request->name;
                 $product->description = $request->description;

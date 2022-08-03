@@ -23,10 +23,10 @@ mysql:
     rootPassword: test
   volumePermissions:
     enabled: true
-  initdbScripts:
-    init.sh: |
-      mysql -uroot -ptest CREATE DATABASE store;
-      mysql -uroot -ptest store < /bitnami/mysql/ecommerce.sql;
+  # initdbScripts:
+  #   init.sh: |
+  #     mysql -uroot -ptest CREATE DATABASE store;
+  #     mysql -uroot -ptest store < /bitnami/mysql/ecommerce.sql;
   primary:
     persistence:
       existingClaim: mysql
@@ -71,7 +71,7 @@ environments:
   DB_USERNAME: root
   DB_PASSWORD: test
   APP_URL: http://ecommerce.local/
-  # APP_ENV: production
+  APP_ENV: 
 
 ingress:
   enabled: true

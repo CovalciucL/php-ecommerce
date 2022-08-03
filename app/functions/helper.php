@@ -1,5 +1,6 @@
 <?php
 
+use App\Classes\Request;
 use App\Classes\Session;
 use App\Models\User;
 use Philo\Blade\Blade;
@@ -41,16 +42,19 @@ function slug($value)
     return trim($value, '-');
 }
 
-function paginate($num_of_records, $total_record, $table_name, $object)
+function paginate($num_of_records, $total_record, $table_name, $object, $instance = 'p')
 {   
-    $pages = new Paginator($num_of_records, 'p');
+    $pages = new Paginator($num_of_records, $instance);
     $pages->set_total($total_record);
 
     $data = Capsule::select("SELECT * FROM $table_name WHERE deleted_at is null ORDER BY created_at DESC" . $pages->get_limit());
     
     $data = $object->transform($data); 
-    
-    return [$data, $pages->page_links()];
+    $query = $_GET;
+    if(isset($query[$instance])){
+        unset($query[$instance]);
+    }
+    return [$data, $pages->page_links('?'.http_build_query($query).'&')];
 }
 
 function isAuthenticated()

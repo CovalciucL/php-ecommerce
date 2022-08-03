@@ -52,10 +52,7 @@ class Cart
             sort($_SESSION['user_cart']);
         }
     }
-    /**
-     * Clears cart
-     * @return void
-     */
+
     public static function clear()
     {
         Session::remove('user_cart');

@@ -17,12 +17,12 @@ nodes:
     protocol: TCP
 - role: worker
   extraMounts:
-  - hostPath: /home/black/Desktop/code/simpleEcommerce/
+  - hostPath: ./
     containerPath: /app
     readOnly: false
     selinuxRelabel: false
     propagation: HostToContainer
-  - hostPath: /home/black/Desktop/code/simpleEcommerce/data
+  - hostPath: ./data
     containerPath: /database
     readOnly: false
     selinuxRelabel: false

@@ -37,15 +37,13 @@
                             <input type="text" name="price" value="<?php echo e(\App\Classes\Request::old('post','price')?:$product->price); ?>">
                         </label>
                     </div>
+                    
                     <div class="small-12 medium-6 cell">
                         <label>Product Category:
                             <select name="category" id="product-category">
-                                <option value="<?php echo e(\App\Classes\Request::old('post','category')?:$product->category->id); ?>">
-                                    <?php echo e(\App\Classes\Request::old('post','category')?:$product->category->name); ?>
-
-                                </option>
                                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                                    <option <?php echo e(\App\Classes\Request::old('post','category') == $category->id || $category->id == $product->category->id ?'selected':''); ?> 
+                                        value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
                         </label>
@@ -53,10 +51,6 @@
                     <div class="small-12 medium-6 cell">
                         <label>Product Subcategory:
                             <select name="subcategory" id="product-subcategory">
-                                <option value="<?php echo e(\App\Classes\Request::old('post','subcategory')?:$product->subCategory->id?:""); ?>">
-                                    <?php echo e(\App\Classes\Request::old('post','subcategory')?:$product->subCategory->name?:"No record found"); ?>
-
-                                </option>
                             </select>
                         </label>
                     </div>
@@ -96,7 +90,6 @@
                 </div>
             </div>
         </form>
-
     </div>
     <?php echo $__env->make('includes.delete-modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
