@@ -35,6 +35,12 @@ spec:
             value: {{ .Values.environments.DB_PASSWORD}}  
           - name: APP_URL
             value: {{ .Values.environments.APP_URL}}
+          - name: EMAIL_USERNAME
+            value: {{ .Values.environments.EMAIL_USERNAME}}
+          - name: EMAIL_PASSWORD
+            value: {{ .Values.environments.EMAIL_PASSWORD}}
+          - name: ADMIN_EMAIL
+            value: {{ .Values.environments.ADMIN_EMAIL}}
       {{- if ne .Values.environments.APP_ENV "production"}}
           volumeMounts: 
             - mountPath: {{ .Values.container.volumeMounts.mountPath }}

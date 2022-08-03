@@ -11,11 +11,9 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 FROM base AS dev-stage
-# ARG ENV
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 RUN curl -sLf -o /dev/null 'https://deb.nodesource.com/node_8.x/dists/bullseye/Release' | bash
 RUN apt -y install nodejs
-RUN if [ "$ENV" = "loacal" ] ; then yarn client:build:prod ; else yarn client:build ; fi
 
 
 FROM composer:2.0.8 AS vendors

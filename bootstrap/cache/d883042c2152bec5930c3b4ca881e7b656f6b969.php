@@ -19,7 +19,7 @@
                     <input type="hidden" name="token" value="<?php echo e(\App\Classes\CSRFToken::token()); ?>">
                     <button class="button float-right">Register</button>
                 </form>
-                <p>Already Registred? <a href="/login"> Login Here</a></p>
+                <p>Already Registred? <a href="/login">  Here</a></p>
                 </div>
             </div>
         </section>

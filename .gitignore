@@ -1,9 +1,7 @@
 node_modules
 vendor
 .env
-# .bowerrc
 composer.lock
 package-lock.json
 npm-debug.log
-ecommerce
 data

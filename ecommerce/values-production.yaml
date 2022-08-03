@@ -1,0 +1,10 @@
+environments:
+  APP_URL: http://ecommerce.web7.md/
+  APP_ENV: production
+
+ingress:
+  hosts:
+    - host: ecommerce.web7.md
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
