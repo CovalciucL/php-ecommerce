@@ -1,13 +1,19 @@
 <?php if(isset($detail['product'])): ?>
-    <tr>
-        <td>
-            <img src="/<?php echo e($detail['product']['image_path']); ?>"
-                 alt="<?php echo e($detail['product']['name']); ?>" height="40" width="40" >
-        </td>
-        <td><?php echo e($detail['product']['name']); ?></td>
-        <td><?php echo e($detail['quantity']); ?></td>
-        <td><?php echo e($detail['unit_price']); ?></td>
-        <td><?php echo e($detail['total']); ?></td>
-        <td><?php echo e($detail['status']); ?></td>
-    </tr>
+    <div class="col-md-2 mt-3">
+        <img src="/<?php echo e($detail['product']['image_path']); ?>"
+                 alt="<?php echo e($detail['product']['name']); ?>" height="50" width="50" >
+      </div>
+      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+        <p class="text-muted mb-0"><?php echo e($detail['product']['name']); ?></p>
+      </div>
+      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+        <p class="text-muted mb-0 small"><?php echo e($detail['quantity']); ?></p>
+      </div>
+      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+        <p class="text-muted mb-0 small"><?php echo e($detail['total']); ?></p>
+      </div>
+      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+          <p class="text-muted mb-0 small"><?php echo e($detail['status']); ?></p>
+    </div>
+    <hr class="mt-3">
 <?php endif; ?><?php /**PATH /var/www/html/resources/views/admin/details/items.blade.php ENDPATH**/ ?>

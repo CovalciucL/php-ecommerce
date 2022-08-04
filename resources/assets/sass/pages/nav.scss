@@ -1,73 +1,36 @@
-$menu-background: #1b1920;
-
-.navigation{
-    z-index: 100;
-    width: 100%;
-    top: 0;
-    position: fixed;
-    font-family: "Open Sans", sans-serif;
-    .logo{
-        font-size: 2rem;
+.container-fluid{
+    .navbar-brand{
+        color: white;
     }
-    .toggle{
-        line-height: 3rem;
-        padding: 0 0.5rem 0.3rem 0.5rem;
-        background-color: darken($menu-background, 10%);
-        .menu-icon{
-           margin-top: 0.5rem;
-           &:focus{
-            outline-style: none;
-           } 
-           &::after{
-            width: 1.8rem;
-           }
+    .nav-item{
+        .nav-link{
+            color: white;
         }
-        .small-logo{
-            padding-bottom: 0.5rem;
-            display: inline-block;
-            height: 2.6rem;
-            width: 6rem;
-            &:focus{
-                outline-style: none;
-               } 
-        }
-    }
-    .top-bar{
-        background-color: $menu-background;
-        ul.menu.vertical{
-            @include breakpoint(small only){
-                text-align: left;
-            }
-            &.sub{
-                padding-right: 0.5rem;
-                padding-left: 0.5rem;
-                margin-top: 0.7rem;
-                li{
-                    border-bottom: 1px dotted #fff;
-                    &:last-of-type{
-                        border-bottom: none;
-                    }
-                }
+        .dropdown-item{
+            &:hover{
+                background-color: darken(#212529,5%);
             }
         }
-        .menu{
-            background-color: $menu-background;
-            li{
-                color: #def0fc;
-                a{
-                    color: #def0fc;
-                    text-decoration: none;
-                    @include breakpoint(medium only){
-                        font-size: 1rem;
-                    }
-                    &:hover{
-                        color: #fff;
-                    }
-                    &:focus{
-                        outline-style: none;
-                    }
-                }
+        .dropdown-submenu {
+            position: relative;
+            &:active{
+                background-color: darken(#212529,5%);
             }
+          }
+          
+        .dropdown-submenu span::after {
+        transform: rotate(-90deg);
+        color: #fff;
+        position: absolute;
+        right: 6px;
+        top: .8em;
+        }
+        
+        .dropdown-submenu .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-left: .1rem;
+        margin-right: .1rem;
         }
     }
 }

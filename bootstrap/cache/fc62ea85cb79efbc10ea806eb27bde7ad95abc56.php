@@ -3,68 +3,76 @@
 
 <?php $__env->startSection('content'); ?>
     <div class="home">
-        <section class="hero">
-            <div class="hero-slider">
-                <img src="/images/sliders/slide_1.jpg" alt="Slide">
-                <img src="/images/sliders/slide_2.jpg" alt="Slide">
-                <img src="/images/sliders/slide_3.jpg" alt="Slide">       
+        <div id="controls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="/images/sliders/slide_1.jpg" class="d-block w-100" alt="Slide">
+              </div>
+              <div class="carousel-item">
+                <img src="/images/sliders/slide_2.jpg" class="d-block w-100" alt="Slide">
+              </div>
+              <div class="carousel-item">
+                <img src="/images/sliders/slide_3.jpg" class="d-block w-100" alt="Slide">
+              </div>
             </div>
-        </section>
-        <section class="display-products" data-token="<?php echo e($token); ?>" id="root">
+            <button class="carousel-control-prev" type="button" data-bs-target="#controls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#controls" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        <section class="display-products mt-5" data-token="<?php echo e($token); ?>" id="root">
             <h2>Featured Products</h2>
-            <div class="grid-x grid-padding-x medium-up-2 large-up-4">
-                <div class="small-12 cell" v-cloak v-for="feature in featured">
-                    <a :href="'/product/' + feature.id">
-                        <div class="card" data-equalizer-watch>
-                            <div class="card-section">
-                              <img :src="'/' + feature.image_path" width="100%" height="200">
-                            </div>
-                            <div class="card-section">
-                                <p>
-                                    {{stringLimit(feature.name, 18)}}
-                                </p>
-                                <a :href="'/product/' + feature.id" class="button more expanded">
-                                    See More
+            <div class="d-flex flex-wrap justify-content-center align-items-center">
+                <div class="block" v-cloak v-for="feature in featured">
+                    <div class="card p-3 d-flex flex-column align-items-center">
+                        <img :src="'/' + feature.image_path" width="100%" height="200" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{stringLimit(feature.name, 18)}}</h5>
+                            <div class="d-flex flex-column">
+                                <a class="btn btn-outline-success mb-2" :href="'/product/' + feature.id" class="">
+                                See More
                                 </a>
-                                <button v-if="feature.quantity > 0" @click.prevent="addToCart(feature.id)" class="button cart expanded">
+                                <button v-if="feature.quantity > 0" @click.prevent="addToCart(feature.id)" class="btn btn-danger">
                                     ${{feature.price}} - Add to cart
                                 </button>
-                                <button v-else class="button cart expanded"disabled>
+                                <button v-else disabled class="btn btn-danger">
                                     Out of Stock
                                 </button>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
             <h2>All Products</h2>
-            <div class="grid-x grid-padding-x medium-up-2 large-up-4">
-                <div class="small-12 cell" v-cloak v-for="product in products">
-                    <a :href="'/product/' + product.id">
-                        <div class="card" data-equalizer-watch>
-                            <div class="card-section">
-                              <img :src="'/' + product.image_path" width="100%" height="200">
-                            </div>
-                            <div class="card-section">
-                                <p>
-                                    {{stringLimit(product.name, 18)}}
-                                </p>
-                                <a :href="'/product/' + product.id" class="button more expanded">
-                                    See More
+            <div class="d-flex flex-wrap justify-content-center align-items-center">
+                <div class="block" v-cloak v-for="product in products">
+                    <div class="card p-3 d-flex flex-column align-items-center" data-equalizer-watch>
+                        <img :src="'/' + product.image_path" width="100%" height="200" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{stringLimit(product.name, 18)}}</h5>
+                            <div class="d-flex flex-column">
+                                <a class="btn btn-outline-success mb-2" :href="'/product/' + product.id">
+                                See More
                                 </a>
-                                <button v-if="product.quantity > 0" @click.prevent="addToCart(product.id)" class="button cart expanded">
+                                <button v-if="product.quantity > 0" @click.prevent="addToCart(product.id)" class="btn btn-danger">
                                     ${{product.price}} - Add to cart
                                 </button>
-                                <button v-else class="button cart expanded"disabled>
+                                <button v-else class="btn btn-danger"disabled>
                                     Out of Stock
                                 </button>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
-            <div class="text-center">
-                <i v-show='loading' class="fa-solid fa-spinner fa-spin" style="font-size:3rem; padding-bottom:3rem; position:fixed; top: 60%; bottom:20%; color: #0a2b12;"></i>
+            <div class="position-fixed top-50 start-50">
+                <div v-show='loading' class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
         </section>
     </div>

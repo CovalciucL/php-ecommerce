@@ -28,34 +28,30 @@
             <div class="small-12 medium-11">
                 <div class="grid-x grid-padding-x">
                     <div class="small-12 medium-6 cell">
-                        <label>Product name:
+                        <label>Product name:</label>
                             <input type="text" name="name" value="<?php echo e(\App\Classes\Request::old('post','name')?:$product->name); ?>">
-                        </label>
                     </div>
                     <div class="small-12 medium-6 cell">
-                        <label>Product price:
+                        <label>Product price:</label>
                             <input type="text" name="price" value="<?php echo e(\App\Classes\Request::old('post','price')?:$product->price); ?>">
-                        </label>
                     </div>
                     
                     <div class="small-12 medium-6 cell">
-                        <label>Product Category:
+                        <label>Product Category:</label>
                             <select name="category" id="product-category">
                                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <option <?php echo e(\App\Classes\Request::old('post','category') == $category->id || $category->id == $product->category->id ?'selected':''); ?> 
                                         value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
-                        </label>
                     </div>
                     <div class="small-12 medium-6 cell">
-                        <label>Product Subcategory:
+                        <label>Product Subcategory:</label>
                             <select name="subcategory" id="product-subcategory">
                             </select>
-                        </label>
                     </div>
                     <div class="small-12 medium-6 cell">
-                        <label>Product Quantity:
+                        <label>Product Quantity:</label>
                             <select name="quantity">
                                 <option value="<?php echo e(\App\Classes\Request::old('post','quantity')?:$product->quantity); ?>">
                                     <?php echo e(\App\Classes\Request::old('post','quantity')?:$product->quantity); ?>
@@ -68,7 +64,6 @@
                                     </option>
                                 <?php endfor; ?>
                             </select>
-                        </label>
                     </div>
                     <div class="small-12 medium-6 cell">
                         <br>
@@ -80,12 +75,11 @@
                         </div>
                     </div>
                     <div class="small-12 cell">
-                        <label for="descriptyion">Description:
+                        <label for="descriptyion">Description:</label>
                             <textarea name="description" placeholder="Description"><?php echo e(\App\Classes\Request::old('post','description')?:$product->description); ?></textarea>
-                        </label>
                         <input type="hidden" name="token" value="<?php echo e(\App\Classes\CSRFToken::token()); ?>">
                         <input type="hidden" name="product_id" value="<?php echo e($product_id?:$product->id); ?>">
-                        <input class="button warning float-right" type="submit" value="Update Product">
+                        <input class="button warning float-right mt-5" type="submit" value="Update Product">
                     </div>
                 </div>
             </div>

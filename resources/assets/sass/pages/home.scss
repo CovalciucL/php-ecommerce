@@ -1,65 +1,23 @@
-.home{
-    padding-top: 3.5rem;
-    @include breakpoint(small only){
-        padding-top: 2.5rem;
-    }
-    .hero{
-        width: 100%;
-        box-sizing: border-box;
-        .hero-slider{
-            img{
-                object-fit: cover;
-                min-height: 300px;
-            }
+.display-products{
+    text-align: center;
+    .block{
+        width: 15%;
+        margin: 20px 4%;
+        @include breakpoint(medium only){
+            width: 30%;
         }
-    }
-    .display-products{
-        padding: 2rem;
         @include breakpoint(small only){
-            padding: 0.7rem;
-            text-align: center;
-        }   
-        a{
-            color: #0a0a0a;
-            &:focus{
-                outline-style: none;
-            }
+            width: 80%;
+            margin: 20px 0;
         }
-        .card{
-            padding: 0.9rem;
-            margin-bottom: 1rem;
-
-            .card-section{
-                margin-bottom: 0.7rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                .button{
-                    border-radius: 0.2rem;
-                    cursor: pointer;
-                    font-size: 0.8rem;
-                    &.more{
-                        color: #00d6b2;
-                        background-color: #fff;
-                        border: 1px solid #00d6b2;
-                    }
-                    &.cart{
-                        color: #fff;
-                        background-color: #ff0000;
-                        border: 1px solid #ff0000;
-                        &:hover{
-                            background-color: lighten(#ff0000, 10%);
-                        }
-                    }
-                }
-                img{
-                    object-fit: cover;
-                    border-radius: 0.5rem;
-                    width: 200px !important;
-                    height: 250px !important;
-                    background-position: top center;
-                }
-            }
+    }
+    .card{
+        img{
+            object-fit: cover;
+            border-radius: 0.5rem;
+            width: 200px !important;
+            height: 250px !important;
+            background-position: top center;
         }
     }
 }

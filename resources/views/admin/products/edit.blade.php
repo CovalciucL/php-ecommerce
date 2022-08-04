@@ -29,34 +29,30 @@
             <div class="small-12 medium-11">
                 <div class="grid-x grid-padding-x">
                     <div class="small-12 medium-6 cell">
-                        <label>Product name:
+                        <label>Product name:</label>
                             <input type="text" name="name" value="{{\App\Classes\Request::old('post','name')?:$product->name}}">
-                        </label>
                     </div>
                     <div class="small-12 medium-6 cell">
-                        <label>Product price:
+                        <label>Product price:</label>
                             <input type="text" name="price" value="{{\App\Classes\Request::old('post','price')?:$product->price}}">
-                        </label>
                     </div>
                     
                     <div class="small-12 medium-6 cell">
-                        <label>Product Category:
+                        <label>Product Category:</label>
                             <select name="category" id="product-category">
                                 @foreach ($categories as $category)
                                     <option {{\App\Classes\Request::old('post','category') == $category->id || $category->id == $product->category->id ?'selected':''}} 
                                         value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
-                        </label>
                     </div>
                     <div class="small-12 medium-6 cell">
-                        <label>Product Subcategory:
+                        <label>Product Subcategory:</label>
                             <select name="subcategory" id="product-subcategory">
                             </select>
-                        </label>
                     </div>
                     <div class="small-12 medium-6 cell">
-                        <label>Product Quantity:
+                        <label>Product Quantity:</label>
                             <select name="quantity">
                                 <option value="{{\App\Classes\Request::old('post','quantity')?:$product->quantity}}">
                                     {{\App\Classes\Request::old('post','quantity')?:$product->quantity}}
@@ -67,7 +63,6 @@
                                     </option>
                                 @endfor
                             </select>
-                        </label>
                     </div>
                     <div class="small-12 medium-6 cell">
                         <br>
@@ -79,12 +74,11 @@
                         </div>
                     </div>
                     <div class="small-12 cell">
-                        <label for="descriptyion">Description:
+                        <label for="descriptyion">Description:</label>
                             <textarea name="description" placeholder="Description">{{\App\Classes\Request::old('post','description')?:$product->description}}</textarea>
-                        </label>
                         <input type="hidden" name="token" value="{{\App\Classes\CSRFToken::token()}}">
                         <input type="hidden" name="product_id" value="{{$product_id?:$product->id}}">
-                        <input class="button warning float-right" type="submit" value="Update Product">
+                        <input class="button warning float-right mt-5" type="submit" value="Update Product">
                     </div>
                 </div>
             </div>

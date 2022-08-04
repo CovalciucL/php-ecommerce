@@ -34,7 +34,7 @@
                 loadMoreProducts: function(){
                     this.loading = true;
                     var token = $('.display-products').data('token');
-                    var data = $.param({next: 2, token: token, count: this.count});
+                    var data = $.param({next: 4, token: token, count: this.count});
                     axios.post('/load-more',data)
                         .then(function(response){
                             app.products = response.data.products;

@@ -12555,7 +12555,7 @@ __webpack_require__(/*! ../../assets/js/pages/product_details */ "./resources/as
           this.loading = true;
           var token = $('.display-products').data('token');
           var data = $.param({
-            next: 2,
+            next: 4,
             token: token,
             count: this.count
           });
@@ -12683,7 +12683,7 @@ __webpack_require__(/*! ../../assets/js/pages/product_details */ "./resources/as
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/black/Desktop/code/simpleEcommerce/resources/assets/js/ecommerce.js */"./resources/assets/js/ecommerce.js");
+module.exports = __webpack_require__(/*! /var/www/html/resources/assets/js/ecommerce.js */"./resources/assets/js/ecommerce.js");
 
 
 /***/ })

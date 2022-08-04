@@ -8,120 +8,127 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <div class="shopping_cart" id="shopping_cart">
-        <div class="text-center">
-            <i v-show="loading" class="fa-solid fa-spinner fa-spin" style="font-size:3rem; padding-bottom:3rem;color: #0a0a0a;"></i>
-        </div>
-        <section class="items" v-cloak v-if="loading == false">
-            <div class="grid-x grid-padding-x">
-                <div class="small-12">
-                    <h2 v-if="fail" v-text="message"></h2>
-                    <div v-else>
-                        <h2>Your Cart</h2>
-                        <table class="hover unstriped">
-                            <thead class="text-left">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Product Name</th>
-                                    <th>($) Unit Price</th> 
-                                    <th>Qty</th><th>Total</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="item in items">
-                                    <td class="medium-text-center">
-                                        <a :href="'/product/' + item.id">
-                                            <img :src="'/' + item.image" height="60px" width="60px" alt="item.name">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <h5><a :href="'/product/' + item.id">{{ item.name }}</a></h5>
-                                        Status:
-                                        <span v-if="item.stock > 1" style="color: #00AA00;">In Stock</span>
-                                        <span v-else style="color: #ff0000;">Out of Stock</span>
-                                    </td>
-                                    <td>{{ item.price }}</td>
-                                    <td>
-                                        {{ item.quantity }}
-                                        <button v-if="item.stock > item.quantity" @click="updateQuantity(item.id, '+')"
-                                                style="cursor: pointer; color: #00AA00;">
-                                            <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                        </button>
-                                        <button v-if="item.quantity > 1" @click="updateQuantity(item.id, '-')"
-                                                style="cursor: pointer; color: #ff8000;">
-                                            <i class="fa fa-minus-square" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                    <td>{{ item.total }}</td>
-                                    <td class="text-center">
-                                        <button @click="removeItem(item.index)">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table>
-                            <tr>
-                                <td valign="top">
-                                    <div class="input-group">
-                                        <input type="text" name="coupon" class="input-group-field" placeholder="coupon code">
-                                        <div class="input-group-button">
-                                            <button class="button">Apply</button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <table class="unstriped">
-                                        <tr>
-                                            <td><h6>Subtotal:</h6></td>
-                                            <td class="text-right"><h6>${{ cartTotal }}</h6></td>
-                                        </tr>
-                                        <tr>
-                                            <td><h6>Discount Amount:</h6></td>
-                                            <td class="text-right"><h6>$0.00</h6></td>
-                                        </tr>
-                                        <tr>
-                                            <td><h6>Tax:</h6></td>
-                                            <td class="text-right"><h6>$0.00</h6></td>
-                                        </tr>
-                                        <tr>
-                                            <td><h6>Total:</h6></td>
-                                            <td class="text-right"><h6>${{ cartTotal }}</h6></td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <div class="text-right">
-                            <button @click="emptyCart()" class="button secondary">
-                                Empty Cart
-                            </button>
-                            <a href="/" class="button secondary">
-                                Continue Shopping &nbsp; <i class="fa-solid fa-cart-shopping"></i>
-                            </a>
-                            <?php if(isAuthenticated()): ?>
-                            <button @click.prevent="checkout()" class="button success">
-                                Pay With Card &nbsp; <i class="fa-solid fa-credit-card"></i>
-                            </button>
-                            <span id="paypalBtn"></span>
-                            <span id="paypalInfo" data-app-env="<?php echo e(getenv('APP_ENV')); ?>" data-app-baseurl="<?php echo e(getenv('APP_URL')); ?>"></span>
-                            <?php else: ?>
-                            <span >
-                                <a href="/login" class="button success">
-                                    Checkout &nbsp; <i class="fa-solid fa-credit-card"></i>
-                                </a>
-                            </span>
-                            <?php endif; ?>
-                            <span id="properties" class="hide" data-customer-email="<?php echo e(user()->email); ?>" data-stripe-key="<?php echo e(\App\Classes\Session::get('publisher_key')); ?>">
-
-                            </span>
-                        </div>
-                    </div>
-                </div>
+        <div class="position-fixed top-50 start-50">
+            <div v-show='loading' class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
             </div>
-        </section>
+        </div>
+        <section class="h-100 items" v-cloak v-if="loading == false">
+            <h2 v-if="fail" v-text="message"></h2>
+            <div v-else class="container py-5 h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12">
+                  <div class="card rounded">
+                    <div class="card-body p-0">
+                      <div class="row g-0">
+                        <div class="col-lg-8">
+                          <div class="p-5">
+                            <div class="d-flex justify-content-between align-items-center mb-5">
+                              <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                            </div>
+                            <hr class="my-4">
+                            <div v-for="item in items">
+                            <div class="row mb-4 d-flex justify-content-between align-items-center">
+                              <div class="col-md-2 col-lg-2 col-xl-2">
+                                <a :href="'/product/' + item.id">
+                                    <img :src="'/' + item.image" height="60px" width="60px" alt="item.name">
+                                </a>
+                              </div>
+                              <div class="col-md-3 col-lg-3 col-xl-3">
+                                <h5><a :href="'/product/' + item.id">{{ item.name }}</a></h5>
+                                Status:
+                                <span v-if="item.stock > 1" style="color: #00AA00;">In Stock</span>
+                                <span v-else style="color: #ff0000;">Out of Stock</span>
+                              </div>
+                              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                  <button v-if="item.quantity > 1" @click="updateQuantity(item.id, '-')"
+                                      style="cursor: pointer; color: #ff8000;">
+                                      <i class="fas fa-minus" aria-hidden="true"></i>
+                                    </button>
+                                    {{ item.quantity }}
+                                    <button v-if="item.stock > item.quantity" @click="updateQuantity(item.id, '+')"
+                                            style="cursor: pointer; color: #00AA00;">
+                                            <i class="fas fa-plus" aria-hidden="true"></i>
+                                    </button>
+                              </div>
+                              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                <h6 class="mb-0">${{ item.price }}</h6>
+                              </div>
+                              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                <button @click="removeItem(item.index)">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </button>
+                              </div>
+                            </div>
+                            <hr class="my-4">
+                            </div>
+                            <div class="pt-5">
+                              <h6 class="mb-0"><a href="/" class="text-body"><i
+                                    class="fas fa-long-arrow-alt-left me-2"></i>Continue Shopping</a></h6>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 bg-grey">
+                          <div class="p-5">
+                            <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                            <hr class="my-4">
+          
+                            <div class="d-flex justify-content-between mb-4">
+                              <h5 class="text-uppercase">Subtotal</h5>
+                              <h5>${{ cartTotal }}</h5>
+                            </div>
+          
+                            <div class="d-flex justify-content-between mb-4">
+                                <h5 class="text-uppercase mb-3">Tax</h5>
+                                <h5>$0.00</h5>
+                            </div>
+                            <div class="mb-4">
+                              <div class="form-outline d-flex">
+                                <input type="text" id="form3Examplea2" placeholder="Coupon code" class="form-control form-control-lg" />
+                                <button class="btn btn-primary coupon-btn">Apply</button>
+                              </div>
+                            </div>
+                            <div class="d-flex justify-content-between mb-4">
+                                <h5 class="text-uppercase mb-3">Discount Amount</h5>
+                                <h5>$0.00</h5>
+                            </div>
+                            <hr class="my-4">
+                            <div class="d-flex justify-content-between mb-5">
+                              <h5 class="text-uppercase">Total price</h5>
+                              <h5>${{ cartTotal }}</h5>
+                            </div>
+                            <div class="text-right">
+                                <button @click="emptyCart()" class="btn btn-secondary mt-3 mb-3">
+                                    Empty Cart
+                                </button>
+                                <a href="/" class="btn btn-secondary mt-3 mb-3">
+                                    Continue Shopping &nbsp; <i class="fa-solid fa-cart-shopping"></i>
+                                </a>
+                                <?php if(isAuthenticated()): ?>
+                                <button @click.prevent="checkout()" class="btn btn-success mt-3 mb-3">
+                                    Pay With Card &nbsp; <i class="fa-solid fa-credit-card"></i>
+                                </button>
+                                <span id="paypalBtn"></span>
+                                <span id="paypalInfo" data-app-env="<?php echo e(getenv('APP_ENV')); ?>" data-app-baseurl="<?php echo e(getenv('APP_URL')); ?>"></span>
+                                <?php else: ?>
+                                <span >
+                                    <a href="/login" class="btn btn-success mt-3 mb-3">
+                                        Checkout &nbsp; <i class="fa-solid fa-credit-card"></i>
+                                    </a>
+                                </span>
+                                <?php endif; ?>
+                                <span id="properties" class="hide" data-customer-email="<?php echo e(user()->email); ?>" data-stripe-key="<?php echo e(\App\Classes\Session::get('publisher_key')); ?>">
+                                </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
     </div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/cart.blade.php ENDPATH**/ ?>

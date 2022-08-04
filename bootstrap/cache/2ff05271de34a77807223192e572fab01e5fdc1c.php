@@ -6,54 +6,50 @@
 <?php $__env->startSection('data-page-id', 'categories'); ?>
 <?php $__env->startSection('content'); ?>
     <div class="home">
-        <section class="display-products" data-token="<?php echo e($token); ?>" data-urlParams="<?php echo e($urlParams); ?>" id="root">
+        <section class="display-products mt-3" data-token="<?php echo e($token); ?>" data-urlParams="<?php echo e($urlParams); ?>" id="root">
             <?php if(isset($category) && $showBreadCrumbs): ?>
-                <div class="grid-x cell">
-                    <nav aria-label="You are here:" role="navigation">
-                        <ul class="breadcrumbs">
-                            <li><a href="/products/category/<?php echo e($category->slug); ?>">
-                                    <?php echo e($category->name); ?></a>
-                            </li>
-                           <?php if(isset($subcategory)): ?>
-                                <li>
-                                        <?php echo e($subcategory->name); ?>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/products/category/<?php echo e($category->slug); ?>"><?php echo e($category->name); ?></a>
+                    </li>
+                    <?php if(isset($subcategory)): ?>
+                    <li class="breadcrumb-item">
+                            <?php echo e($subcategory->name); ?>
 
-                                </li>
-                           <?php endif; ?>
-                        </ul>
-                    </nav>
-                </div>
-                <?php else: ?>
-                    <h2>Categories</h2>
+                    </li>
+                    <?php endif; ?>
+                </ol>
+            </nav>
+            <?php else: ?>
+            <h2>Categories</h2>
             <?php endif; ?>
-            <div class="grid-x grid-padding-x medium-up-2 large-up-4">
-                <div class="small-12 cell" v-cloak v-for="product in products">
-                    <a :href="'/product/' + product.id">
-                        <div class="card" data-equalizer-watch>
-                            <div class="card-section">
-                                <img :src="'/' + product.image_path" width="100%" height="200">
-                            </div>
-                            <div class="card-section">
-                                <p>
-                                    {{ stringLimit(product.name, 18) }}
-                                </p>
-                                <a :href="'/product/' + product.id" class="button more expanded">
-                                    See More
+            <div class="d-flex flex-wrap justify-content-center">
+                <div class="block" v-cloak v-for="product in products">
+                    <div class="card p-3 d-flex flex-column align-items-center">
+                        <img :src="'/' + product.image_path" width="100%" height="200" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{stringLimit(product.name, 18)}}</h5>
+                            <div class="d-flex flex-column">
+                                <a class="btn btn-outline-success mb-2" :href="'/product/' + product.id">
+                                See More
                                 </a>
-                                <button v-if="product.quantity > 0" @click.prevent="addToCart(product.id)" class="button cart expanded">
-                                    ${{ product.price }} - Add to cart
+                                <button v-if="product.quantity > 0" @click.prevent="addToCart(product.id)" class="btn btn-danger">
+                                    ${{product.price}} - Add to cart
                                 </button>
-                                <button v-else class="button cart expanded" disabled>
+                                <button v-else disabled class="btn btn-danger">
                                     Out of Stock
                                 </button>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
-                <h2 v-if="products.length === 0">No product in this category.</h2>
+                <h2 v-if="products.length === 0">No products in this category.</h2>
             </div>
-            <div class="text-center">
-                <i v-show='loading' class="fa-solid fa-spinner fa-spin" style="font-size:3rem; padding-bottom:3rem; position:fixed; top: 60%; bottom:20%; color: #0a2b12;"></i>
+            <div class="position-fixed top-50 start-50">
+                <div v-show='loading' class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
         </section>
     </div>

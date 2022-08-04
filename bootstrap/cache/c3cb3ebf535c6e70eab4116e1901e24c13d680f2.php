@@ -4,20 +4,22 @@
 <?php $__env->startSection('content'); ?>
     <div class="auth" id="auth">
         <section class="login_form">
-            <div class="grid-x align-center grid-padding-x">
-                <div class="small-12 medium-7 medium-centered">
-                    <h2 class="text-center">
-                        Login
-                    </h2>
-                    <?php echo $__env->make('includes.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                    <form action="/login" method="POST">
-                    <input type="text" name="username" placeholder="Your Username or Email" value="<?php echo e(\App\Classes\Request::old('post','username')); ?>">
-                    <input type="password" name="password" placeholder="Your Password">
+            <div class="container-sm">
+                <h2 class="text-center">
+                    Login
+                </h2>
+                <?php echo $__env->make('includes.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                <form action="/login" method="POST">
+                        <div class="mb-3">
+                            <input type="text" name="username" class="form-control" placeholder="Your Username or Email" value="<?php echo e(\App\Classes\Request::old('post','username')); ?>">
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" name="password" class="form-control" placeholder="Your Password">
+                        </div>
                     <input type="hidden" name="token" value="<?php echo e(\App\Classes\CSRFToken::token()); ?>">
-                    <button class="button float-right">Login</button>
+                    <button class="btn btn-primary float-end">Login</button>
                 </form>
-                <p>Don't have an account? <a href="/register">Register Here</a></p>
-                </div>
+            <p>Don't have an account? <a href="/register">Register Here</a></p>
             </div>
         </section>
     </div>

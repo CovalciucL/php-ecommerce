@@ -1,5 +1,7 @@
 window.$ = window.JQuery = require('jquery');
 window.axios = require('axios');
+window.Popper = require('popper.js');
+require('bootstrap');
 
 require('foundation-sites/dist/js/foundation.min');
 
@@ -14,5 +16,6 @@ require('../../assets/js/admin/events');
 require('../../assets/js/admin/update');
 
 require('../../assets/js/pages/slider');
+require('../../assets/js/pages/dropdown');
 require('../../assets/js/init');
 require('../../assets/js/pages/products');

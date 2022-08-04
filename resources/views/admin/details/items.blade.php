@@ -1,13 +1,19 @@
 @if(isset($detail['product']))
-    <tr>
-        <td>
-            <img src="/{{ $detail['product']['image_path'] }}"
-                 alt="{{ $detail['product']['name'] }}" height="40" width="40" >
-        </td>
-        <td>{{ $detail['product']['name'] }}</td>
-        <td>{{ $detail['quantity'] }}</td>
-        <td>{{ $detail['unit_price'] }}</td>
-        <td>{{ $detail['total'] }}</td>
-        <td>{{ $detail['status'] }}</td>
-    </tr>
+    <div class="col-md-2 mt-3">
+        <img src="/{{ $detail['product']['image_path'] }}"
+                 alt="{{ $detail['product']['name'] }}" height="50" width="50" >
+      </div>
+      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+        <p class="text-muted mb-0">{{ $detail['product']['name'] }}</p>
+      </div>
+      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+        <p class="text-muted mb-0 small">{{ $detail['quantity'] }}</p>
+      </div>
+      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+        <p class="text-muted mb-0 small">{{$detail['total'] }}</p>
+      </div>
+      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+          <p class="text-muted mb-0 small">{{$detail['status'] }}</p>
+    </div>
+    <hr class="mt-3">
 @endif

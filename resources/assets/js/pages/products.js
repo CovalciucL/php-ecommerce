@@ -8,7 +8,7 @@
                 products: [],
                 count: 0,
                 loading: false,
-                next: 8,
+                next: 5,
                 targetElement: $('.display-products'),
                 loadMoreEndpoint: '/products/category/load-more'
             },

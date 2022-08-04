@@ -1,22 +1,10 @@
-.product{
-    padding: 6rem;
-
+.product-info{
     @include breakpoint(small only){
-        text-align: center;
-        padding: 1rem;
-        padding-top: 5rem;
+        flex-direction: column;
     }
-    p{
-        padding: 1rem;
-    }
-    .button{
-        border-radius: 0.2rem;
-        cursor: pointer;
-        border: 1px solid #ff0000;
-        background-color: #ff0000;
-        margin-left: 1rem;
-        &:hover{
-            background-color: lighten(#ff0000,10%);
-        }
+    img{
+        object-fit: contain;
+        max-height: 500px;
+        margin-right: 20px;
     }
 }

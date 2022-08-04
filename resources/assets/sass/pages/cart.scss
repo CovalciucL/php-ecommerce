@@ -1,7 +1,8 @@
 .shopping_cart{
-    padding: 6rem;
-
     @include breakpoint(small only){
         padding: 2rem 1rem;
+    }
+    .coupon-btn{
+        height: 48px;
     }
 }

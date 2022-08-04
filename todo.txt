@@ -1,7 +1,9 @@
-cards for product
+card for product
 buttons
-cart
 inputs
+cart
 header
 menu
 carousel
+breadcrumbs
+Admin orders
